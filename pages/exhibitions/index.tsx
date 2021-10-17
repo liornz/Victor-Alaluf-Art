@@ -1,9 +1,10 @@
-interface Props {
+import { GetStaticProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-}
+interface Props {}
 
 const ExhibitionsPage: React.FC<Props> = (props) => {
-const {  } = props;
+  const {} = props;
   return (
     <div>
       All Exhibitions Page
@@ -13,3 +14,13 @@ const {  } = props;
 };
 
 export default ExhibitionsPage;
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const locale = context.locale!;
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common', 'footer', 'nav'])),
+    },
+  };
+};
