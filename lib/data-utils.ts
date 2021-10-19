@@ -1,124 +1,113 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { postMetaData, countryMetaData } from './types';
+import { artworkMetaData, categoryMetaData } from './types';
 
-const enContryDataDirectory = path.join(process.cwd(), 'countries-data', 'en');
-const esCountryDataDirectory = path.join(process.cwd(), 'countries-data', 'es');
+const enCategoryDataDirectory = path.join(process.cwd(), 'data', 'en', 'categories');
+const esCategoryDataDirectory = path.join(process.cwd(), 'data', 'es', 'categories');
 
-export function getCountryFileNames(locale: string) {
+export function getCategoryFileNames(locale: string) {
   let dataFiles;
   switch (locale) {
     case 'en-US':
-      dataFiles = fs.readdirSync(enContryDataDirectory);
+      dataFiles = fs.readdirSync(enCategoryDataDirectory);
       return dataFiles;
     case 'es-AR':
-      dataFiles = fs.readdirSync(esCountryDataDirectory);
+      dataFiles = fs.readdirSync(esCategoryDataDirectory);
       return dataFiles;
     default:
-      dataFiles = fs.readdirSync(enContryDataDirectory);
+      dataFiles = fs.readdirSync(enCategoryDataDirectory);
       return dataFiles;
   }
 }
 
-export function getCountryFileData(fileIdentifier: string, locale: string) {
-  const countrySlug = fileIdentifier.replace(/\.md$/, '');
+export function getCategoryFileData(fileIdentifier: string, locale: string) {
+  const categorySlug = fileIdentifier.replace(/\.md$/, '');
   let filePath;
   switch (locale) {
     case 'es-US':
-      filePath = path.join(enContryDataDirectory, `${countrySlug}.md`);
+      filePath = path.join(enCategoryDataDirectory, `${categorySlug}.md`);
       break;
     case 'es-AR':
-      filePath = path.join(esCountryDataDirectory, `${countrySlug}.md`);
+      filePath = path.join(esCategoryDataDirectory, `${categorySlug}.md`);
       break;
     default:
-      filePath = path.join(enContryDataDirectory, `${countrySlug}.md`);
+      filePath = path.join(enCategoryDataDirectory, `${categorySlug}.md`);
   }
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { data, content } = matter(fileContent);
 
-  const countryData = {
-    slug: countrySlug,
-    ...(data as countryMetaData),
+  const categoryData = {
+    slug: categorySlug,
+    ...(data as categoryMetaData),
     content,
   };
-  return countryData;
+  return categoryData;
 }
 
-export function getAllCountriesData(locale: string) {
-  const countryFileNames = getCountryFileNames(locale);
-  const allCountries = countryFileNames.map((fileName) => {
-    return getCountryFileData(fileName, locale);
+export function getAllCategoriesData(locale: string) {
+  const categoryFileNames = getCategoryFileNames(locale);
+  const allCategories = categoryFileNames.map((fileName) => {
+    return getCategoryFileData(fileName, locale);
   });
-  return allCountries;
+  return allCategories;
 }
 
-export function buildCountryDirectory(country: string, locale: string) {
+export function buildCategoryDirectory(category: string, locale: string) {
   const enDataDirectory = path.join(
     process.cwd(),
-    'destination-data',
+    'data',
     'en',
-    country
+    'works',
+    category
   );
   const esDataDirectory = path.join(
     process.cwd(),
-    'destination-data',
+    'data',
     'es',
-    country
+    'works',
+    category
   );
   const directory = locale === 'en-US' ? enDataDirectory : esDataDirectory;
   return directory;
 }
 
 export function getFileData(
-  country: string,
+  category: string,
   locale: string,
   fileIdentifier: string
 ) {
-  const directory = buildCountryDirectory(country, locale);
+  const directory = buildCategoryDirectory(category, locale);
   const fileSlug = fileIdentifier.replace(/\.md$/, '');
   const filePath = path.join(directory, `${fileSlug}.md`);
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { data, content } = matter(fileContent);
 
-  const postData = {
+  const artworkData = {
     slug: fileSlug,
-    countrySlug: country,
-    ...(data as postMetaData),
+    categorySlug: category,
+    ...(data as artworkMetaData),
     content,
   };
-  return postData;
+  return artworkData;
 }
 
-export function getFileNamesPerCountry(country: string, locale: string) {
+export function getFileNamesPerCategory(category: string, locale: string) {
 
-  const directory = buildCountryDirectory(country, locale);
+  const directory = buildCategoryDirectory(category, locale);
 
   const fileNames = fs.readdirSync(directory);
   return fileNames;
 }
 
-export function getDestinationsPerCountry(country: string, locale: string) {
+export function getArtworksPerCategory(category: string, locale: string) {
 
-  const directory = buildCountryDirectory(country, locale);
+  const directory = buildCategoryDirectory(category, locale);
 
   const fileNames = fs.readdirSync(directory);
   const filesData = fileNames.map(file => {
-    return getFileData(country, locale, file);
+    return getFileData(category, locale, file);
   });
   return filesData;
 }
 
-export function getFeaturedDestinations(locale: string) {
-  const countryFileNames = getCountryFileNames(locale);
-   const countrySlugs = countryFileNames.map((fileName) =>
-     fileName.replace(/\.md$/, '')
-   );
-   let allDestinationData: postMetaData[] = [];
-  for (const country of countrySlugs) {
-    const destinations = getDestinationsPerCountry(country, locale);
-    allDestinationData = allDestinationData.concat(destinations);
-  }
-  const featuredDestinations = allDestinationData.filter(destination => destination.isFeatured === true);
-  return featuredDestinations;
-}

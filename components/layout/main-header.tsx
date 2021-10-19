@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import Logo from './logo';
 import Navbar from './navbar';
 import styles from './main-header.module.scss';
@@ -13,8 +14,11 @@ const MainHeader: React.FC<Props> = (props) => {
     winWidth = window.innerWidth <= breakpoint;
   }
   const [isMobile, setIsMobile] = useState(winWidth);
-  const [showMobileMenu, setShowMobileMenu] = useState<boolean | undefined>(undefined);
+  const [showMobileMenu, setShowMobileMenu] = useState<boolean | undefined>(
+    undefined
+  );
   const {} = props;
+  const router = useRouter();
 
   useEffect(() => {
     const handleResizeWindow = () =>
@@ -45,8 +49,15 @@ const MainHeader: React.FC<Props> = (props) => {
       </div>
     </header>
   ) : (
-    <header>
-      <div className={styles.header_desktop}>
+    <header className={styles.header}>
+      <div
+        className={styles.header_desktop}
+        style={
+          router.pathname === '/'
+            ? { backgroundColor: 'rgba(0, 0, 0, 0.3)' }
+            : {}
+        }
+      >
         <Logo />
         <Navbar show isMobile={false} />
       </div>

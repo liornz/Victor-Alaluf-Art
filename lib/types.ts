@@ -1,63 +1,37 @@
-export type location = {
-  lat: number;
-  lng: number;
-};
-
-export type post = {
+export type artwork = {
   slug: string;
-  countrySlug: string;
+  categorySlug: string;
   title: string;
-  subtitle: string;
-  country: string;
-  region: string;
-  image: string;
+  category: string;
+  materials: string;
+  measurements: string;
+  year: string;
+  mainImage: string;
   blurDataURL: string;
-  youtubeId: string;
-  isFeatured: boolean;
-  location: location;
-  zoom: number;
+  images: string;
   content: string;
 };
 
-export type postMetaData = {
+export type artworkMetaData = {
   title: string;
-  subtitle: string;
-  country: string;
-  region: string;
+  category: string;
+  materials: string;
+  measurements: string;
+  year: string;
+  mainImage: string;
+  blurDataURL: string;
+  images: string;
+};
+
+export type categoryMetaData = {
+  name: string;
   image: string;
   blurDataURL: string;
-  youtubeId: string;
-  isFeatured: boolean;
-  location: location;
-  zoom: number;
 };
 
-export type commentData = {
-  _id: string;
-  email: string;
-  name: string;
-  text: string;
-};
-
-export type enteredCommentData = {
-  email: string;
-  name: string;
-  text: string;
-};
-
-export type countryMetaData = {
-  name: string;
-  flag: string;
-  flagBlurDataURL: string;
-  image: string;
-  blurDataURL: string;
-}
-
-export type country = {
+export type category = {
   slug: string;
   name: string;
-  flag: string;
-  flagBlurDataURL: string;
   image: string;
   blurDataURL: string;
 };
