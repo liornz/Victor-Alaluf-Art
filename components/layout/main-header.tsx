@@ -49,7 +49,7 @@ const MainHeader: React.FC<Props> = (props) => {
       </div>
     </header>
   ) : (
-    <header className={styles.header}>
+    <header>
       <div
         className={styles.header_desktop}
         style={

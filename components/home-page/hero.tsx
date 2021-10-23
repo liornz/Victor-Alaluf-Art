@@ -43,7 +43,39 @@ const Hero: React.FC<Props> = (props) => {
         </p>
       </div>
       <div className={styles.section}>
+        <h3 className={styles.heading}>Biennial</h3>
+        <p>
+          2016 - BACOS – Bienal Internacional de Arte Contemporáneo Emergente Eve-Maria
+          Zimmermann – San Miguel de Abona, Tenerife, Spain
+        </p>
+        <p>2016 – Santorini Art Biennale – Santorini, Greece</p>
+        <p>
+          2015 – “Omboyere – Bianal Misionera de Arte 2015”, Posadas, Misiones,
+          Argentina
+        </p>
+        <p>2008 – The Biennial for Young artists – Ramat-Hasharon, Israel</p>
+      </div>
+      <div className={styles.section}>
         <h3 className={styles.heading}>Exhibitions</h3>
+        <p>2017 – BIAEMX – International Art Biennial El Escarabajo – México</p>
+        <p>2017 – Oblivion – MPG Art – Vittoria – Italy</p>
+        <p>2017 – Fomenar – Arte Borgo Gallery – Rome</p>
+        <p>2017 – AAF Selection – EXP Art Studio&Gallery, Bibbiena, Italy</p>
+        <p>2017 – Affordable Art Fair – Milan, Italy</p>
+        <p>2016 – Vanitas#1 – LoosenArt – Cagliari – Italy</p>
+        <p>
+          2016 – @Berlin Walls – Priests & Prawns – WBB Willner Brauerei –
+          Berlin
+        </p>
+        <p>
+          2016 – BACOS – Bienal Internacional de Arte Contemporáneo Emergente
+          Eve-Maria Zimmermann – San Miguel de Abona, Tenerife, Spain
+        </p>
+        <p>2016 – Santorini Art Biennial – Santorini, Greece</p>
+        <p>
+          2016 – Lynx 2016 Second Edition – Trieste, Ajdovščinam, Zagabria,
+          Livorno
+        </p>
         <p>2016 – Ar[t]Cevia – International Art Festival – Arcevia, Italy</p>
         <p>2016 – In Between – Kulturschöpfer Gallery, Berlin</p>
         <p>2016 – Arte Laguna Art Prize – Arsenale - Venice, Italy</p>
@@ -131,7 +163,7 @@ const Hero: React.FC<Props> = (props) => {
       <div className="header-underline"></div>
       <div className={styles.AboutContainer}>
         <div className={styles.AboutText}>{aboutText}</div>
-        <div className={styles.resume} >{resume}</div>
+        <div className={styles.resume}>{resume}</div>
       </div>
     </div>
   );

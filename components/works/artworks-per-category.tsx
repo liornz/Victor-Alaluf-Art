@@ -1,5 +1,6 @@
 import ArtworksGrid from './artworks-grid';
-import styles from './artworks-per-category.module.scss';
+// import styles from './artworks-per-category.module.scss';
+import 'animate.css';
 import { artwork, category } from '../../lib/types';
 
 interface Props {
@@ -12,12 +13,17 @@ const ArtworksPerCagegory: React.FC<Props> = (props) => {
 
   return (
     <>
-      <div className={styles.container}>
-        <h1 className="header">
-          {`${category.name.toUpperCase()}`}
+      <div className="landing">
+        <div className="home-wrap">
+          <div className={`home-inner-${category.slug}`}></div>
+        </div>
+      </div>
+      <div className="caption">
+        <h1
+          className="animate__animated animate__fadeInUp animate__delay-1s"
+        >
+          {category.name.toUpperCase()}
         </h1>
-        <div className="header-underline"></div>
-        <div className={styles.divider}></div>
       </div>
       <ArtworksGrid
         artworks={artworks}

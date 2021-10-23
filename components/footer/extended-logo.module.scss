@@ -1,6 +1,7 @@
 @use '../../styles/variables';
 
 .container {
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   color: white;
@@ -28,5 +29,5 @@
 .image {
   margin-left: -1rem;
   margin-top: -0.3rem;
-  width: 7rem;
+  width: 3rem;
 }

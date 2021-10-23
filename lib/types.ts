@@ -9,6 +9,7 @@ export type artwork = {
   mainImage: string;
   blurDataURL: string;
   images: string;
+  imageNames: string;
   content: string;
 };
 
@@ -21,6 +22,7 @@ export type artworkMetaData = {
   mainImage: string;
   blurDataURL: string;
   images: string;
+  imageNames: string;
 };
 
 export type categoryMetaData = {

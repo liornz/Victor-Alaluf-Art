@@ -18,8 +18,8 @@ const CategoryCard: React.FC<Props> = (props) => {
             <Image
               src={imagePath}
               alt={`image representing ${name}`}
-              width={600}
-              height={350}
+              width={400}
+              height={280}
               layout="responsive"
               // placeholder="blur"
               // blurDataURL={blurDataURL}

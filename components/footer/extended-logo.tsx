@@ -10,11 +10,11 @@ const ExtendedLogo: React.FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.image}>
-        <Link href="/">
+        {/* <Link href="/">
           <a>
             <Image src={logo} alt="Sin Fronteras Logo" />
           </a>
-        </Link>
+        </Link> */}
       </div>
       <h1>{t('logo-subtitle')}</h1>
       <a href="mailto:vicalaluf@gmail.com">

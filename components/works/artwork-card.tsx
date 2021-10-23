@@ -21,8 +21,8 @@ const ArtworkCard: React.FC<Props> = (props) => {
             <Image
               src={imagePath}
               alt={title}
-              width={600}
-              height={350}
+              width={400}
+              height={280}
               layout="responsive"
               // placeholder="blur"
               // blurDataURL={blurDataURL}

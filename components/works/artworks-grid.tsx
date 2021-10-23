@@ -21,7 +21,7 @@ const ArtworksGrid: React.FC<Props> = (props) => {
         ))}
       </div>
       <div className={styles.fixedWrap}>
-        <div className={styles.fixedInner} style={image ? {backgroundImage: `url('/images/categories/${slug}/${image}')`} : undefined}></div>
+        <div className={styles.fixedInner} style={image ? {backgroundImage: `url('/images/categories/${slug}/background.jpg')`} : undefined}></div>
       </div>
     </div>
   );
