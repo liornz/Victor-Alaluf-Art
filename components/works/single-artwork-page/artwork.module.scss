@@ -9,8 +9,12 @@
 
 .main {
   display: flex;
+  flex-direction: column;
   padding-bottom: 2rem;
   background-color: rgb(226, 225, 225);
+  @media (min-width: 600px) {
+    flex-direction: row;
+  }
 }
 
 .image_carousel {
@@ -18,7 +22,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  // width: 35%;
+  width: 85%;
   max-width: 35rem;
   margin: auto;
 }

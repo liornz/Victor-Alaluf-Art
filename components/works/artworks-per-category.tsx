@@ -20,7 +20,7 @@ const ArtworksPerCagegory: React.FC<Props> = (props) => {
       </div>
       <div className="caption">
         <h1
-          className="animate__animated animate__fadeInUp animate__delay-1s"
+          className="animate__animated animate__fadeInUp"
         >
           {category.name.toUpperCase()}
         </h1>
