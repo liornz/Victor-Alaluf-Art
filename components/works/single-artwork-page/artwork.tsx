@@ -39,7 +39,7 @@ const Artwork: React.FC<Props> = (props) => {
       {imageNamesArray[imageCounter] ? (
         <h1>{imageNamesArray[imageCounter]}</h1>
       ) : null}
-      <p>{artwork.materials}</p>
+      <h3>{artwork.materials}</h3>
       <p>{artwork.measurements}</p>
       <p>{artwork.year}</p>
     </div>

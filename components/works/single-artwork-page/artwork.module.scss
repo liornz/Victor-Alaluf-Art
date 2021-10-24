@@ -2,6 +2,7 @@
   margin: 0;
   padding: 1rem 0;
   text-align: center;
+  font-size: 2.5rem;
   color: rgb(56, 56, 56);
   text-shadow: 2px 2px 2px #ccc;
   background-color: rgb(226, 225, 225);
@@ -33,7 +34,13 @@
   height: 50vh;
   margin: auto;
   flex: 90%;
+  background-color: rgb(205, 205, 205);
+  transition: transform 0.5s ease-out;
   @media (min-width: 600px) {
+    &:hover {
+      transform: scale(200%);
+      transform: translate(-50% -50%);
+    }
     height: 75vh;
   }
 }
@@ -54,12 +61,16 @@
 }
 
 // .image {
-//   box-shadow: 10px 5px 5px red;
+//   transition: transform 0.5s ease-out;
+//   &:hover {
+//     transform: scale(200%);
+//     transform: translate(-50% -50%);
+//   }
 // }
 
 .data {
   text-align: center;
-  margin-left: 2rem;
+  margin-left: 4rem;
   width: 18rem;
   align-self: center;
   color: rgb(56, 56, 56);
