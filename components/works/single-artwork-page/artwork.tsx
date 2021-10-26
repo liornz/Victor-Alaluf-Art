@@ -4,6 +4,7 @@ import styles from './artwork.module.scss';
 import { artwork } from '../../../lib/types';
 import { AiOutlineLeft } from 'react-icons/ai';
 import { AiOutlineRight } from 'react-icons/ai';
+import PreviewArtwork from './preview-artwork';
 
 interface Props {
   artwork: artwork;
@@ -13,6 +14,7 @@ interface Props {
 
 const Artwork: React.FC<Props> = (props) => {
   const [imageCounter, setImageCounter] = useState(0);
+  const [imagePreview, setImagePreview] = useState(false);
   const { artwork, category, fileName } = props;
   const imagesArray = artwork.images.split('/');
   const imageNamesArray = artwork.imageNames.split('/');
@@ -32,6 +34,13 @@ const Artwork: React.FC<Props> = (props) => {
     } else {
       setImageCounter((state) => state - 1);
     }
+  };
+
+  const openPreviewHandler = () => {
+    setImagePreview(true);
+  };
+  const closePreviewHandler = () => {
+    setImagePreview(false);
   };
 
   const artworkData = (
@@ -58,7 +67,7 @@ const Artwork: React.FC<Props> = (props) => {
           >
             <AiOutlineLeft size="2rem" />
           </span>
-          <div className={styles.image_container}>
+          <div className={styles.image_container} onClick={openPreviewHandler}>
             <Image
               className={styles.image}
               src={imagePath}
@@ -77,6 +86,13 @@ const Artwork: React.FC<Props> = (props) => {
           </span>
         </div>
       </div>
+      {imagePreview ? (
+        <PreviewArtwork
+          imagePath={imagePath}
+          imageTitle={artwork.title}
+          close={closePreviewHandler}
+        />
+      ) : null}
     </>
   );
 };
