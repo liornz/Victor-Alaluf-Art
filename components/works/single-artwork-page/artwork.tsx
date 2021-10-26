@@ -43,6 +43,46 @@ const Artwork: React.FC<Props> = (props) => {
     setImagePreview(false);
   };
 
+  let xDown: number | null = null;
+  let yDown: number | null = null;
+
+  function handleTouchStart(evt: React.TouchEvent<HTMLDivElement>) {
+    const firstTouch = evt.touches[0];
+    xDown = firstTouch.clientX;
+    yDown = firstTouch.clientY;
+  }
+
+  function handleTouchMove(evt: React.TouchEvent<HTMLDivElement>) {
+    if (!xDown || !yDown) {
+      return;
+    }
+
+    const xUp = evt.touches[0].clientX;
+    const yUp = evt.touches[0].clientY;
+
+    const xDiff = xDown - xUp;
+    const yDiff = yDown - yUp;
+
+    if (Math.abs(xDiff) > Math.abs(yDiff)) {
+      if (xDiff > 0) {
+        rotateImageForward();
+      } else {
+        rotateImageBackward();
+      }
+    } else {
+      // if (yDiff > 0) {
+      //   console.log('swipe down');
+      //   /* down swipe */
+      // } else {
+      //   console.log('swipe up');
+      //   /* up swipe */
+      // }
+    }
+    /* reset values */
+    xDown = null;
+    yDown = null;
+  }
+
   const artworkData = (
     <div className={styles.data}>
       {imageNamesArray[imageCounter] ? (
@@ -67,7 +107,12 @@ const Artwork: React.FC<Props> = (props) => {
           >
             <AiOutlineLeft size="2rem" />
           </span>
-          <div className={styles.image_container} onClick={openPreviewHandler}>
+          <div
+            className={styles.image_container}
+            onClick={openPreviewHandler}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+          >
             <Image
               className={styles.image}
               src={imagePath}
