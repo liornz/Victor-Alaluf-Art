@@ -32,13 +32,13 @@ const Navbar: React.FC<Props> = (props) => {
         </Link>
       </li>
       <li onClick={toggle}>
-        <Link href="/exhibitions">
+        <Link href="/press">
           <a
             style={{
-              color: router.pathname === '/exhibitions' ? 'rgb(240,150,37)' : '',
+              color: router.pathname === '/press' ? 'rgb(240,150,37)' : '',
             }}
           >
-            {t('exhibitions')}
+            {t('press')}
             <div className={styles.underline}></div>
           </a>
         </Link>

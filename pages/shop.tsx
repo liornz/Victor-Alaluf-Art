@@ -11,10 +11,10 @@ const ShopPage: React.FC<Props> = (props) => {
   return (
     <React.Fragment>
       <Head>
-        <title>Travelblog Sinfronteras - Shop Page</title>
+        <title>Victor Alaluf - Shop Page</title>
         <meta
           name="description"
-          content="Shop - Sinfronteras Travel Blog - Cool items for inspiration!"
+          content="Shop - Victor Alaluf - Artist Portfolio"
         />
       </Head>
       <Shop />

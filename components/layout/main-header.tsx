@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Logo from './logo';
 import Navbar from './navbar';
@@ -34,7 +34,7 @@ const MainHeader: React.FC<Props> = (props) => {
     setShowMobileMenu((prevState) => !prevState);
   }
 
-  let output = isMobile ? (
+  let output: JSX.Element | null = isMobile ? (
     <header>
       <div className={styles.header_mobile}>
         <div className={styles.toolbar_mobile}>
@@ -65,7 +65,7 @@ const MainHeader: React.FC<Props> = (props) => {
   );
 
   if (typeof window === 'undefined') {
-    output = <div></div>;
+    output = null;
   }
 
   return output;

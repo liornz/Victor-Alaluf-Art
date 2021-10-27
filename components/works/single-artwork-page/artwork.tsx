@@ -78,7 +78,6 @@ const Artwork: React.FC<Props> = (props) => {
       //   /* up swipe */
       // }
     }
-    /* reset values */
     xDown = null;
     yDown = null;
   }

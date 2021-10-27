@@ -10,14 +10,17 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap"
           />
-          <meta name="application-name" content="Sin Fronteras" />
+          <meta name="application-name" content="Victor Alaluf - Art" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta
             name="apple-mobile-web-app-status-bar-style"
             content="default"
           />
-          <meta name="apple-mobile-web-app-title" content="Sin Fronteras" />
-          <meta name="description" content="Sin Fronteras Travel Blog" />
+          <meta
+            name="apple-mobile-web-app-title"
+            content="Victor Alaluf - Art"
+          />
+          <meta name="description" content="Victor Alaluf - Artist Portfolio" />
           <meta name="format-detection" content="telephone=no" />
           <meta name="mobile-web-app-capable" content="yes" />
           {/* <meta
@@ -67,29 +70,29 @@ class MyDocument extends Document {
           <meta name="twitter:card" content="summary" />
           <meta
             name="twitter:url"
-            content="https://sinfronteras-travelblog.com"
+            content="https://victoralaluf.com"
           />
-          <meta name="twitter:title" content="Sin Fronteras" />
+          <meta name="twitter:title" content="Victor Alaluf - Art" />
           <meta
             name="twitter:description"
-            content="Sin Fronteras Travrl Blog"
+            content="Victor Alaluf - Artist Portfolio"
           />
           <meta
             name="twitter:image"
-            content="https://sinfronteras-travelblog.com/images/icons/android-chrome-192x192.png"
+            content="https://victoralaluf.com/images/icons/android-chrome-192x192.png"
           />
           <meta name="twitter:creator" content="@VictorAlaluf" />
           <meta property="og:type" content="website" />
-          <meta property="og:title" content="Sin Fronteras" />
-          <meta property="og:description" content="Sin Fronteras Travel Blog" />
-          <meta property="og:site_name" content="Sin Fronteras" />
+          <meta property="og:title" content="Victor Alaluf" />
+          <meta property="og:description" content="Victor Alaluf - Artist Portfolio" />
+          <meta property="og:site_name" content="Victor Alaluf - Art" />
           <meta
             property="og:url"
-            content="https://sinfronteras-travelblog.com"
+            content="https://victoralaluf.com"
           />
           <meta
             property="og:image"
-            content="https://sinfronteras-travelblog.com/images/icons/apple-touch-icon.png"
+            content="https://victoralaluf.com/images/icons/apple-touch-icon.png"
           />
         </Head>
         <body>

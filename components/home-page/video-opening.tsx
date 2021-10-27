@@ -10,11 +10,11 @@ const VideoOpening: React.FC<Props> = (props) => {
         autoPlay
         loop
         muted
-        poster="/images/background/mapa-verde-small.jpg"
+        poster=""
         className={styles.video}
         width="100%"
       >
-        <source src="/videos/vic3.webm" type="video/webm" />
+        {/* <source src="/videos/vic3.webm" type="video/webm" /> */}
         <source src="/videos/vic3.mp4" type="video/mp4" />
         Sorry, your browser does not support embedded videos.
       </video>
