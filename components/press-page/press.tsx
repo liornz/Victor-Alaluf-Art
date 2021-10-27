@@ -8,9 +8,7 @@ const Press: React.FC<Props> = (props) => {
     <div className={styles.main}>
       <h1 className={styles.header}>German</h1>
       <section className={styles.section}>
-        <h3>
-          Vanitas Exhibition, Bernheimer Contemporary. München, Septenber 2014:
-        </h3>
+        <h3>Vanitas, Bernheimer Contemporary. München, Septenber 2014:</h3>
         <ul>
           <li>
             <a href="https://www.muenchenarchitektur.com/beitrag/22099-vanitas">
@@ -25,7 +23,7 @@ const Press: React.FC<Props> = (props) => {
             </Link>
           </li>
           <li>
-            <Link href="/press/Neustart-mit-Tradition_Abendzeitung_12.09.2014">
+            <Link href="/press/muenchner-abendzeitung">
               <a>
                 <p>Münchner Abendzeitung - Sept. 2014</p>
               </a>
