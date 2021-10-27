@@ -43,7 +43,7 @@ const Navbar: React.FC<Props> = (props) => {
           </a>
         </Link>
       </li>
-      <li onClick={toggle}>
+      {/* <li onClick={toggle}>
         <Link href="/shop">
           <a
             style={{
@@ -54,7 +54,7 @@ const Navbar: React.FC<Props> = (props) => {
             <div className={styles.underline}></div>
           </a>
         </Link>
-      </li>
+      </li> */}
       <li onClick={toggle}>
         <Link href="/contact">
           <a
@@ -67,7 +67,7 @@ const Navbar: React.FC<Props> = (props) => {
           </a>
         </Link>
       </li>
-      <li onClick={toggle}>
+      {/* <li onClick={toggle}>
         <Link
           href={{
             pathname: router.pathname,
@@ -77,7 +77,7 @@ const Navbar: React.FC<Props> = (props) => {
         >
           {t('lang')}
         </Link>
-      </li>
+      </li> */}
     </ul>
   );
 

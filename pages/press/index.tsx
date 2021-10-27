@@ -2,7 +2,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
-import Press from '../components/press-page/press';
+import Press from '../../components/press-page/press';
 
 interface Props {}
 

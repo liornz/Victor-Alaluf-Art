@@ -16,6 +16,7 @@
   color: white;
   cursor: pointer;
   z-index: 1001;
+  animation: closeIn .5s ease-out forwards;
 }
 
 .backdrop {
@@ -45,6 +46,17 @@
     transform: scale(0%);
   }
   100% {
+    transform: scale(100%);
+  }
+}
+
+@keyframes closeIn {
+  0%{ 
+    opacity: 0;
+    transform: scale(0%);
+  }
+  100% {
+    opacity: 1;
     transform: scale(100%);
   }
 }
