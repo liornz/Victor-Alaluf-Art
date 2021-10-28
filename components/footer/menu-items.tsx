@@ -19,16 +19,16 @@ const MenuItems: React.FC = () => {
           {t('works')}
         </a>
       </Link>
-      <Link href="/exhibitions">
+      <Link href="/press">
         <a
           style={{
-            color: router.pathname === '/exhibitions' ? 'rgb(240,150,37)' : '',
+            color: router.pathname === '/press' ? 'rgb(240,150,37)' : '',
           }}
         >
-          {t('exhibitions')}
+          {t('press')}
         </a>
       </Link>
-      <Link href="/shop">
+      {/* <Link href="/shop">
         <a
           style={{
             color: router.pathname === '/shop' ? 'rgb(240,150,37)' : '',
@@ -36,7 +36,7 @@ const MenuItems: React.FC = () => {
         >
           {t('shop')}
         </a>
-      </Link>
+      </Link> */}
       <Link href="/contact">
         <a
           style={{
