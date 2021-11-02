@@ -8,5 +8,8 @@ module.exports = withPWA({
     dest: 'public',
     runtimeCaching,
   },
-  i18n
+  images: {
+    formats: ['image/avif', 'image/webp'],
+  },
+  i18n,
 });

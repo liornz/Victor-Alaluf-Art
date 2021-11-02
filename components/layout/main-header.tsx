@@ -37,7 +37,9 @@ const MainHeader: React.FC<Props> = (props) => {
   let output: JSX.Element | null = isMobile ? (
     <header>
       <div className={styles.header_mobile}>
-        <div className={styles.toolbar_mobile}>
+        <div
+          className={styles.toolbar_mobile}
+        >
           <Logo toggle={showMobileMenu ? toggleMobileMenu : undefined} />
           <MenuToggler show={showMobileMenu} toggle={toggleMobileMenu} />
         </div>
