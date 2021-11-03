@@ -9,7 +9,7 @@ interface Props {}
 const Article: React.FC<Props> = (props) => {
   const {} = props;
   const router = useRouter();
-  const filename = router.query!.article;
+  const filename = router.query.article!;
   const imagePath = `/images/press/${filename}.jpg`;
   return (
     <Image

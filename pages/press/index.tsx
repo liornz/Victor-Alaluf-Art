@@ -11,7 +11,7 @@ const PressPage: React.FC<Props> = (props) => {
   return (
     <>
       <Head>
-        <title>Travelblog Sinfronteras - Shop Page</title>
+        <title>Victor Alaluf - Press Page</title>
         <meta
           name="description"
           content="Press Page - Victor Alaluf - Artist Portfolio"
