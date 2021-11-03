@@ -9,9 +9,7 @@ export const siteTitle = 'Victor Alaluf - Artist Portfolio';
 const siteDescription =
   'Artwork Portfolio of Victor Alaluf - A Conceptual Artist in the flieds of Installation, Sculpture and Drawing';
 
-
 function MyApp({ Component, pageProps }: AppProps) {
-
   const generalHead = (
     <Head>
       <link rel="icon" href="/favicon.ico" />
