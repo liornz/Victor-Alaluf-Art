@@ -21,10 +21,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
       />
       <meta charSet="utf-8"></meta>
-      {/* <meta
+      <meta
         name="google-site-verification"
         content="g9rOuYhxp85PFoEn6Ib1IRk6ogMouW5ZlU5tk-djwhE"
-      /> */}
+      />
       <title>{siteTitle}</title>
       <meta name="description" content={siteDescription} />
       {/* <meta name="og:title" content={siteTitle} />
