@@ -31,8 +31,8 @@ class MyDocument extends Document {
           <meta name="msapplication-tap-highlight" content="no" />
           <meta name="theme-color" content="#000000" />
 
-          {/* <link rel="apple-touch-icon" href="images/icons/touch-icon-iphone.png" /> */}
-          {/* <link
+          <link rel="apple-touch-icon" href="images/icons/touch-icon-iphone.png" />
+          <link
             rel="apple-touch-icon"
             sizes="152x152"
             href="/images/icons/touch-icon-ipad.png"
@@ -60,12 +60,12 @@ class MyDocument extends Document {
             sizes="16x16"
             href="/images/icons/favicon-16x16.png"
           />
-          <link rel="manifest" href="/manifest.json" /> */}
-          {/* <link
+          <link rel="manifest" href="/manifest.json" />
+           <link
             rel="mask-icon"
             href="/images/icons/safari-pinned-tab.svg"
             color="#5bbad5"
-          /> */}
+          />
           <link rel="shortcut icon" href="/favicon.ico" />
           <meta name="twitter:card" content="summary" />
           <meta
