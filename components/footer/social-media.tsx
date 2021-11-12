@@ -28,13 +28,15 @@ const SocialMedia: React.FC = () => {
         <p className={styles.social_text}>INSTAGRAM</p>
       </a>
       <a
-        id="instagram"
+        id="sinfronteras"
         className={styles.item}
         href="https://sinfronteras-travelblog.com"
         target="_blank"
         rel="noreferrer"
       >
-        <Image src={sinFronteras} alt="Sin Fronteras Logo" />
+        <div className={styles.image}>
+          <Image src={sinFronteras} alt="Sin Fronteras Logo" />
+        </div>
         <p className={styles.social_text}>SIN FRONTERAS</p>
       </a>
     </div>

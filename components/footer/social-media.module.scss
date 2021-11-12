@@ -1,5 +1,6 @@
 .container {
   display: flex;
+  align-items: flex-start;
   color: white;
   margin-top: 1rem;
   @media (min-width: 1000px) {
@@ -29,6 +30,13 @@
 }
 
 .container svg {
+  margin: 0 1rem;
+  @media (min-width: 1000px) {
+    margin: 0;
+  }
+}
+
+.image {
   margin: 0 1rem;
   @media (min-width: 1000px) {
     margin: 0;
