@@ -90,6 +90,9 @@ const Artwork: React.FC<Props> = (props) => {
       <h3>{artwork.materials}</h3>
       <p>{artwork.measurements}</p>
       <p>{artwork.year}</p>
+      <p className={styles.image_count}>
+        {`Image ${imageCounter + 1} out of ${imagesArray.length}`}
+      </p>
     </div>
   );
 
