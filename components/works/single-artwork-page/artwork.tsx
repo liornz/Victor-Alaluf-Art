@@ -90,7 +90,10 @@ const Artwork: React.FC<Props> = (props) => {
       <h3>{artwork.materials}</h3>
       <p>{artwork.measurements}</p>
       <p>{artwork.year}</p>
-      <p className={styles.image_count}>
+      <p
+        className={styles.image_count}
+        style={imagesArray.length < 2 ? { display: 'none' } : {}}
+      >
         {`Image ${imageCounter + 1} out of ${imagesArray.length}`}
       </p>
     </div>
@@ -106,6 +109,7 @@ const Artwork: React.FC<Props> = (props) => {
             role="button"
             className={styles.button_minus}
             onClick={rotateImageBackward}
+            style={imagesArray.length < 2 ? { display: 'none' } : {}}
           >
             <AiOutlineLeft size="2rem" />
           </span>
@@ -128,6 +132,7 @@ const Artwork: React.FC<Props> = (props) => {
             role="button"
             className={styles.button_plus}
             onClick={rotateImageForward}
+            style={imagesArray.length < 2 ? { display: 'none' } : {}}
           >
             <AiOutlineRight size="2rem" />
           </span>
