@@ -42,10 +42,10 @@ const ArtworkCard: React.FC<Props> = (props) => {
               <div className={styles.title}>
                 <h1>{title}</h1>
               </div>
-              <div className={styles.subtitle}>
+              <div className={styles.materials}>
                 <p>{materials}</p>
               </div>
-              <div className={styles.subtitle}>
+              <div className={styles.measurements}>
                 <p>{measurements}</p>
               </div>
             </div>
