@@ -4,4 +4,4 @@ Disallow: /nogooglebot/
 User-agent: *
 Allow: /
 
-Sitemap: https://vicalaluf.com/sitemap.xml
+Sitemap: https://www.vicalaluf.com/sitemap.xml
