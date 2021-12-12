@@ -39,7 +39,7 @@
   &:hover {
     cursor: zoom-in;
   }
-  @media (min-width: 600px) {
+  @media (min-width: 800px) {
     height: 75vh;
   }
 }
@@ -81,4 +81,20 @@
 
 .image_count {
   margin-top: 2rem;
+}
+
+.details {
+  margin: 0;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  text-align: justify;
+  background-color: rgb(226, 225, 225);
+  color: rgb(56, 56, 56);
+  text-shadow: 2px 2px 2px #ccc;
+  @media (min-width: 600px) {
+    padding: 1rem 10vw 3rem;
+    font-size: 1.2rem;
+    line-height: 2rem;
+  }
 }

@@ -138,6 +138,7 @@ const Artwork: React.FC<Props> = (props) => {
           </span>
         </div>
       </div>
+      <p className={styles.details}>{artwork.content}</p>
       {imagePreview ? (
         <PreviewArtwork
           imagePath={imagePath}
