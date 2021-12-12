@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import ReactMarkdown from 'react-markdown';
 import { useState } from 'react';
 import styles from './artwork.module.scss';
 import { artwork } from '../../../lib/types';
@@ -138,7 +139,7 @@ const Artwork: React.FC<Props> = (props) => {
           </span>
         </div>
       </div>
-      <p className={styles.details}>{artwork.content}</p>
+      <ReactMarkdown className={styles.details}>{artwork.content}</ReactMarkdown>
       {imagePreview ? (
         <PreviewArtwork
           imagePath={imagePath}
