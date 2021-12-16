@@ -127,6 +127,7 @@ const Artwork: React.FC<Props> = (props) => {
               layout="fill"
               objectFit="contain"
               objectPosition="50% 50%"
+              priority
             />
           </div>
           <span
