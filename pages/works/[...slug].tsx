@@ -95,7 +95,7 @@ const ArtWorkPage: Page = ({
         key={image}
         rel="preload"
         as="image"
-        href={`/images/works/${category}/${fileName}/${image}`}
+        href={`https://www.victoralaluf.com/images/works/${category}/${fileName}/${image}`}
       />
     ));
 
