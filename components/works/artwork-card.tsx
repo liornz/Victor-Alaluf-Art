@@ -23,8 +23,6 @@ const ArtworkCard: React.FC<Props> = (props) => {
     categorySlug,
     slug,
     title,
-    mainImage,
-    blurDataURL,
     materials,
     measurements,
   } = props.artwork;
@@ -39,6 +37,8 @@ const ArtworkCard: React.FC<Props> = (props) => {
               <Image
                 {...images.imageProps}
                 alt={title}
+                width={400}
+                height={280}
                 layout="responsive"
                 placeholder="blur"
               />

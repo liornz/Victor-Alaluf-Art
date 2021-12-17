@@ -27,6 +27,8 @@ const CategoryCard: React.FC<Props> = (props) => {
             <Image
               {...image.imageProps}
               alt={`image representing ${name}`}
+              width={400}
+              height={280}
               layout="responsive"
               placeholder="blur"
             />
