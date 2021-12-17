@@ -10,32 +10,12 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Artwork from '../../components/works/single-artwork-page/artwork';
 import { artwork } from '../../lib/types';
 import Head from 'next/head';
+import type { InferGetStaticPropsType } from 'next';
+import { getPlaiceholder } from 'plaiceholder';
 
 interface Props {
   fileData: artwork;
 }
-
-const ArtWorkPage: React.FC<Props> = (props) => {
-  const { fileData } = props;
-  const slug = useRouter().query.slug as string[];
-  const category = slug[0];
-  const fileName = slug[1];
-
-  return (
-    <Fragment>
-      <Head>
-        <title>{`${fileData.title}`}</title>
-        <meta
-          name="description"
-          content={`Vic Alaluf Art - ${fileData.title}`}
-        />
-      </Head>
-      <Artwork artwork={fileData} category={category} fileName={fileName} />
-    </Fragment>
-  );
-};
-
-export default ArtWorkPage;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const slug = context.params!.slug as string[];
@@ -43,10 +23,22 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const fileName = slug[1];
   const locale = context.locale! as string;
   const data = getFileData(category, locale, fileName);
+  const imagesArray = data.images.split('/');
+  const imagePropsArray = await Promise.all(imagesArray.map(async (image) => {
+    const imagePath = `/images/works/${category}/${fileName}/${image}`;
+    const { base64, img } = await getPlaiceholder(imagePath);
+    return {
+      imageProps: {
+        ...img,
+        blurDataURL: base64,
+      },
+    };
+  })).then(values => values);
 
   return {
     props: {
       fileData: data,
+      imagePropsArray,
       ...(await serverSideTranslations(locale, ['artwork', 'footer', 'nav'])),
     },
   };
@@ -86,3 +78,27 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: false,
   };
 };
+
+const ArtWorkPage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
+  fileData,
+  imagePropsArray,
+}) => {
+  const slug = useRouter().query.slug as string[];
+  const category = slug[0];
+  const fileName = slug[1];
+
+  return (
+    <Fragment>
+      <Head>
+        <title>{`${fileData.title}`}</title>
+        <meta
+          name="description"
+          content={`Vic Alaluf Art - ${fileData.title}`}
+        />
+      </Head>
+      <Artwork artwork={fileData} category={category} fileName={fileName} images={imagePropsArray} />
+    </Fragment>
+  );
+};
+
+export default ArtWorkPage;

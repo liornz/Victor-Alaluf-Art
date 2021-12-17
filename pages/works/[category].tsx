@@ -1,4 +1,4 @@
-import { GetStaticProps, GetStaticPaths } from 'next';
+import { GetStaticProps, GetStaticPaths, InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import React from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -10,14 +10,16 @@ import {
   getArtworksPerCategory,
 } from '../../lib/data-utils';
 import { artwork, category } from '../../lib/types';
+import { getPlaiceholder } from 'plaiceholder';
 
 interface Props {
   artworks: artwork[];
   category: category;
 }
 
-const ArtCategoryPage: React.FC<Props> = (props) => {
-  const { artworks, category } = props;
+const ArtCategoryPage: React.FC<
+  InferGetStaticPropsType<typeof getStaticProps>
+> = ({ artworks, category, imagePropsArray }) => {
   return (
     <React.Fragment>
       <Head>
@@ -27,7 +29,7 @@ const ArtCategoryPage: React.FC<Props> = (props) => {
           content={`Victor Alaluf Art - ${category.name}`}
         />
       </Head>
-      <ArtworksPerCategory artworks={artworks} category={category} />
+      <ArtworksPerCategory artworks={artworks} category={category} images={imagePropsArray} />
     </React.Fragment>
   );
 };
@@ -46,10 +48,22 @@ export const getStaticProps: GetStaticProps = async (context) => {
     locale as string
   );
 
+  const imagePropsArray = await Promise.all(artworks.map(async (artwork) => {
+    const imagePath = `/images/works/${artwork.categorySlug}/${artwork.slug}/${artwork.mainImage}`;
+    const { base64, img } = await getPlaiceholder(imagePath);
+    return {
+      imageProps: {
+        ...img,
+        blurDataURL: base64,
+      },
+    };
+  })).then(values => values);
+
   return {
     props: {
       artworks,
       category: categoryFileData,
+      imagePropsArray,
       ...(await serverSideTranslations(locale, ['common', 'footer', 'nav'])),
     },
   };

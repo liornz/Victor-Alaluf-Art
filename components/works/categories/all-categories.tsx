@@ -5,10 +5,19 @@ import { category } from '../../../lib/types';
 
 interface Props {
   categories: category[];
+  images: {
+    imageProps: {
+      blurDataURL: string;
+      src: string;
+      height: number;
+      width: number;
+      type?: string | undefined;
+    };
+  }[];
 }
 
 const AllCategories: React.FC<Props> = (props) => {
-  const { categories } = props;
+  const { categories, images } = props;
   const { t } = useTranslation('common');
 
   return (
@@ -20,7 +29,7 @@ const AllCategories: React.FC<Props> = (props) => {
         <div className="header-underline"></div>
         <div className={styles.divider}></div>
       </div>
-      <CategoriesGrid categories={categories} />
+      <CategoriesGrid categories={categories} images={images} />
     </div>
   );
 };

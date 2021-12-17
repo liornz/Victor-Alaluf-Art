@@ -5,24 +5,30 @@ import { category } from '../../../lib/types';
 
 interface Props {
   category: category;
+  image: {
+    imageProps: {
+      blurDataURL: string;
+      src: string;
+      height: number;
+      width: number;
+      type?: string | undefined;
+    };
+  };
 }
 
 const CategoryCard: React.FC<Props> = (props) => {
-  const { slug, name, image, blurDataURL } = props.category;
-  const imagePath = `/images/categories/${slug}/${image}`;
+  const { slug, name } = props.category;
+  const { image } = props;
   return (
     <Link href={`/works/${slug}`}>
       <a>
         <div className={styles.card}>
           <div className={styles.image}>
             <Image
-              src={imagePath}
+              {...image.imageProps}
               alt={`image representing ${name}`}
-              width={400}
-              height={280}
               layout="responsive"
-              // placeholder="blur"
-              // blurDataURL={blurDataURL}
+              placeholder="blur"
             />
             <div className={styles.overlay}></div>
           </div>

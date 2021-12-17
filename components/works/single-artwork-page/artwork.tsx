@@ -11,12 +11,21 @@ interface Props {
   artwork: artwork;
   category: string;
   fileName: string;
+  images: {
+    imageProps: {
+      blurDataURL: string;
+      src: string;
+      height: number;
+      width: number;
+      type?: string | undefined;
+    };
+  }[];
 }
 
 const Artwork: React.FC<Props> = (props) => {
   const [imageCounter, setImageCounter] = useState(0);
   const [imagePreview, setImagePreview] = useState(false);
-  const { artwork, category, fileName } = props;
+  const { artwork, category, fileName, images } = props;
   const imagesArray = artwork.images.split('/');
   const imageNamesArray = artwork.imageNames.split('/');
   const imagePath = `/images/works/${category}/${fileName}/${imagesArray[imageCounter]}`;
@@ -122,7 +131,8 @@ const Artwork: React.FC<Props> = (props) => {
           >
             <Image
               className={styles.image}
-              src={imagePath}
+              {...images[imageCounter].imageProps}
+              // placeholder="blur"
               alt={artwork.title}
               layout="fill"
               objectFit="contain"
@@ -140,7 +150,9 @@ const Artwork: React.FC<Props> = (props) => {
           </span>
         </div>
       </div>
-      <ReactMarkdown className={styles.details}>{artwork.content}</ReactMarkdown>
+      <ReactMarkdown className={styles.details}>
+        {artwork.content}
+      </ReactMarkdown>
       {imagePreview ? (
         <PreviewArtwork
           imagePath={imagePath}

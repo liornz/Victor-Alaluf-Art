@@ -1,15 +1,23 @@
 import ArtworksGrid from './artworks-grid';
-// import styles from './artworks-per-category.module.scss';
 import 'animate.css';
 import { artwork, category } from '../../lib/types';
 
 interface Props {
   artworks: artwork[];
   category: category;
+  images: {
+    imageProps: {
+      blurDataURL: string;
+      src: string;
+      height: number;
+      width: number;
+      type?: string | undefined;
+    };
+  }[];
 }
 
 const ArtworksPerCagegory: React.FC<Props> = (props) => {
-  const { artworks, category } = props;
+  const { artworks, category, images } = props;
 
   return (
     <>
@@ -29,6 +37,7 @@ const ArtworksPerCagegory: React.FC<Props> = (props) => {
         artworks={artworks}
         image={category.image}
         slug={category.slug}
+        images={images}
       />
     </>
   );

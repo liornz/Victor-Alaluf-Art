@@ -7,6 +7,15 @@ import { artwork } from '../../lib/types';
 
 interface Props {
   artwork: artwork;
+  images: {
+    imageProps: {
+      blurDataURL: string;
+      src: string;
+      height: number;
+      width: number;
+      type?: string | undefined;
+    };
+  };
 }
 
 const ArtworkCard: React.FC<Props> = (props) => {
@@ -19,7 +28,7 @@ const ArtworkCard: React.FC<Props> = (props) => {
     materials,
     measurements,
   } = props.artwork;
-  const imagePath = `/images/works/${categorySlug}/${slug}/${mainImage}`;
+  const images = props.images;
 
   return (
     <Fade delay={300}>
@@ -28,13 +37,10 @@ const ArtworkCard: React.FC<Props> = (props) => {
           <div className={styles.card}>
             <div className={styles.image}>
               <Image
-                src={imagePath}
+                {...images.imageProps}
                 alt={title}
-                width={400}
-                height={280}
                 layout="responsive"
-                // placeholder="blur"
-                // blurDataURL={blurDataURL}
+                placeholder="blur"
               />
               <div className={styles.overlay}></div>
             </div>

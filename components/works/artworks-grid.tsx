@@ -6,17 +6,27 @@ interface Props {
   artworks: artwork[];
   image?: string;
   slug: string;
+  images: {
+    imageProps: {
+      blurDataURL: string;
+      src: string;
+      height: number;
+      width: number;
+      type?: string | undefined;
+    };
+  }[];
 }
 
 const ArtworksGrid: React.FC<Props> = (props) => {
-  const { artworks, image, slug } = props;
+  const { artworks, image, slug, images } = props;
   return (
     <div className={styles.fixedContainer}>
       <div className={styles.dark}>
-        {artworks.map((item) => (
+        {artworks.map((item, index) => (
           <ArtworkCard
             key={item.slug}
             artwork={item}
+            images={images[index]}
           />
         ))}
       </div>

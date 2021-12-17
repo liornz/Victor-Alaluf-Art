@@ -3,16 +3,25 @@ import CategoryCard from './category-card';
 import { category } from '../../../lib/types';
 
 interface Props {
-  categories: category[]
+  categories: category[];
+  images: {
+    imageProps: {
+      blurDataURL: string;
+      src: string;
+      height: number;
+      width: number;
+      type?: string | undefined;
+    };
+  }[];
 }
 
 const CategoriesGrid: React.FC<Props> = (props) => {
-  const { categories } = props;
+  const { categories, images } = props;
   return (
     <div className={styles.fixedContainer}>
       <div className={styles.dark}>
-        {categories.map((category) => (
-          <CategoryCard key={category.slug} category={category} />
+        {categories.map((category, index) => (
+          <CategoryCard key={category.slug} category={category} image={images[index]} />
         ))}
       </div>
       <div className={styles.fixedWrap}>
