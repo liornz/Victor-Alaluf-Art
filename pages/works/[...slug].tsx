@@ -79,7 +79,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-const ArtWorkPage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
+type Page = React.FC<InferGetStaticPropsType<typeof getStaticProps>>;
+
+const ArtWorkPage: Page = ({
   fileData,
   imagePropsArray,
 }) => {
