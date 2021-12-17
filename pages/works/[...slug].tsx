@@ -13,9 +13,6 @@ import Head from 'next/head';
 import type { InferGetStaticPropsType } from 'next';
 import { getPlaiceholder } from 'plaiceholder';
 
-interface Props {
-  fileData: artwork;
-}
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const slug = context.params!.slug as string[];
@@ -79,6 +76,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
+interface Props {
+  fileData: artwork;
+}
+
 type Page = React.FC<InferGetStaticPropsType<typeof getStaticProps>>;
 
 const ArtWorkPage: Page = ({
@@ -88,6 +89,15 @@ const ArtWorkPage: Page = ({
   const slug = useRouter().query.slug as string[];
   const category = slug[0];
   const fileName = slug[1];
+    const imagesArray = fileData.images.split('/');
+    const links = imagesArray.map((image: string) => (
+      <link
+        key={image}
+        rel="preload"
+        as="image"
+        href={`/images/works/${category}/${fileName}/${image}`}
+      />
+    ));
 
   return (
     <Fragment>
@@ -97,6 +107,7 @@ const ArtWorkPage: Page = ({
           name="description"
           content={`Vic Alaluf Art - ${fileData.title}`}
         />
+        {links}
       </Head>
       <Artwork artwork={fileData} category={category} fileName={fileName} images={imagePropsArray} />
     </Fragment>
