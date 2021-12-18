@@ -13,24 +13,23 @@ import Head from 'next/head';
 import type { InferGetStaticPropsType } from 'next';
 import { getPlaiceholder } from 'plaiceholder';
 
-
 export const getStaticProps: GetStaticProps = async (context) => {
   const slug = context.params!.slug as string[];
   const category = slug[0];
-  const fileName = slug[1];
+  const artworkName = slug[1];
   const locale = context.locale! as string;
-  const data = getFileData(category, locale, fileName);
+  const data = getFileData(category, locale, artworkName);
   const imagesArray = data.images.split('/');
-  const imagePropsArray = await Promise.all(imagesArray.map(async (image) => {
-    const imagePath = `/images/works/${category}/${fileName}/${image}`;
-    const { base64, img } = await getPlaiceholder(imagePath);
-    return {
-      imageProps: {
+  const imagePropsArray = await Promise.all(
+    imagesArray.map(async (image) => {
+      const imagePath = `/images/works/${category}/${artworkName}/${image}`;
+      const { base64, img } = await getPlaiceholder(imagePath);
+      return {
         ...img,
         blurDataURL: base64,
-      },
-    };
-  })).then(values => values);
+      };
+    })
+  ).then((values) => values);
 
   return {
     props: {
@@ -49,25 +48,32 @@ export const getStaticPaths: GetStaticPaths = async () => {
     locale: string;
   }[] = [];
   const categoryFileNames = getCategoryFileNames('en-US');
-  const categoryFileSlugs = categoryFileNames.map((fileName) =>
-    fileName.replace(/\.md$/, '')
+  const categoryFileSlugs = categoryFileNames.map((FileName) =>
+    FileName.replace(/\.md$/, '')
   );
   for (const category of categoryFileSlugs) {
     const fileNames = getFileNamesPerCategory(category, 'en-US');
     const fileSlugs = fileNames.map((fileName) =>
       fileName.replace(/\.md$/, '')
     );
-    const pathsEn = fileSlugs.map((file) => ({
-      params: { slug: [category, file] },
-      locale: 'en-US',
-    }));
+    for (const file of fileSlugs) {
+      const fileData = getFileData(category, 'en-US', file);
+      const imageNamesArray = fileData.images
+        .split('/')
+        .map((imageName) => imageName.replace(/\.jpg$|\.png$|\.jfif$/, ''));
 
-    const pathsEs = fileSlugs.map((file) => ({
-      params: { slug: [category, file] },
-      locale: 'es-AR',
-    }));
-    const pathsCountry = pathsEn.concat(pathsEs);
-    pathsArray = pathsArray.concat(pathsCountry);
+      const pathsEn = imageNamesArray.map((imageName) => ({
+        params: { slug: [category, file, imageName] },
+        locale: 'en-US',
+      }));
+
+      const pathsEs = imageNamesArray.map((imageName) => ({
+        params: { slug: [category, file, imageName] },
+        locale: 'es-AR',
+      }));
+      const pathsCategory = pathsEn.concat(pathsEs);
+      pathsArray = pathsArray.concat(pathsCategory);
+    }
   }
 
   return {
@@ -82,22 +88,15 @@ interface Props {
 
 type Page = React.FC<InferGetStaticPropsType<typeof getStaticProps>>;
 
-const ArtWorkPage: Page = ({
-  fileData,
-  imagePropsArray,
-}) => {
+const ArtWorkPage: Page = ({ fileData, imagePropsArray }) => {
   const slug = useRouter().query.slug as string[];
   const category = slug[0];
-  const fileName = slug[1];
-    const imagesArray = fileData.images.split('/');
-    const links = imagesArray.map((image: string) => (
-      <link
-        key={image}
-        rel="preload"
-        as="image"
-        href={`https://www.victoralaluf.com/images/works/${category}/${fileName}/${image}`}
-      />
-    ));
+  const artworkName = slug[1];
+  const imageName = slug[2];
+  const imagesArray: string[] = fileData.images.split('/');
+  const imageIndex = imagesArray.findIndex(
+    (image) => image.replace(/\.jpg$|\.png$|\.jfif$/, '') === imageName
+  );
 
   return (
     <Fragment>
@@ -107,9 +106,8 @@ const ArtWorkPage: Page = ({
           name="description"
           content={`Vic Alaluf Art - ${fileData.title}`}
         />
-        {links}
       </Head>
-      <Artwork artwork={fileData} category={category} fileName={fileName} images={imagePropsArray} />
+      <Artwork artwork={fileData} imageProps={imagePropsArray[imageIndex]} imageName={imageName} />
     </Fragment>
   );
 };

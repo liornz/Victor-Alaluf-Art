@@ -2,19 +2,25 @@ import styles from './preview-artwork.module.scss';
 import Image from 'next/image';
 
 interface Props {
-  imagePath: string;
   imageTitle: string;
   close: () => void;
+  imageProps: {
+    blurDataURL: string;
+    src: string;
+    height: number;
+    width: number;
+    type?: string | undefined;
+  };
 }
 
 const PreviewArtwork: React.FC<Props> = (props) => {
-  const { imagePath, imageTitle, close } = props;
+  const { imageTitle, close, imageProps } = props;
   return (
     <>
       <div className={styles.backdrop} onClick={close}>
         <div className={styles.image_container} onClick={(event) => {event.stopPropagation()}}>
           <Image
-            src={imagePath}
+            {...imageProps}
             alt={imageTitle}
             layout="fill"
             objectFit="contain"

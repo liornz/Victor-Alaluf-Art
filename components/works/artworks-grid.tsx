@@ -6,19 +6,17 @@ interface Props {
   artworks: artwork[];
   image?: string;
   slug: string;
-  images: {
-    imageProps: {
-      blurDataURL: string;
-      src: string;
-      height: number;
-      width: number;
-      type?: string | undefined;
-    };
+  imagePropsArray: {
+    blurDataURL: string;
+    src: string;
+    height: number;
+    width: number;
+    type?: string | undefined;
   }[];
 }
 
 const ArtworksGrid: React.FC<Props> = (props) => {
-  const { artworks, image, slug, images } = props;
+  const { artworks, image, slug, imagePropsArray } = props;
   return (
     <div className={styles.fixedContainer}>
       <div className={styles.dark}>
@@ -26,12 +24,21 @@ const ArtworksGrid: React.FC<Props> = (props) => {
           <ArtworkCard
             key={item.slug}
             artwork={item}
-            images={images[index]}
+            imageProps={imagePropsArray[index]}
           />
         ))}
       </div>
       <div className={styles.fixedWrap}>
-        <div className={styles.fixedInner} style={image ? {backgroundImage: `url('/images/categories/${slug}/background.jpg')`} : undefined}></div>
+        <div
+          className={styles.fixedInner}
+          style={
+            image
+              ? {
+                  backgroundImage: `url('/images/categories/${slug}/background.jpg')`,
+                }
+              : undefined
+          }
+        ></div>
       </div>
     </div>
   );

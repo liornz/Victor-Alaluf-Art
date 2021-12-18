@@ -7,30 +7,27 @@ import { artwork } from '../../lib/types';
 
 interface Props {
   artwork: artwork;
-  images: {
-    imageProps: {
-      blurDataURL: string;
-      src: string;
-      height: number;
-      width: number;
-      type?: string | undefined;
-    };
+  imageProps: {
+    blurDataURL: string;
+    src: string;
+    height: number;
+    width: number;
+    type?: string | undefined;
   };
 }
 
 const ArtworkCard: React.FC<Props> = (props) => {
-  const {
-    categorySlug,
-    slug,
-    title,
-    materials,
-    measurements,
-  } = props.artwork;
-  const { imageProps } = props.images;
+  const { categorySlug, slug, title, materials, measurements } = props.artwork;
+  const { imageProps } = props;
+  const imagesArray = props.artwork.images.split('/');
+  const filePath = `/works/${categorySlug}/${slug}/${imagesArray[0].replace(
+    /\.jpg$|\.png$|\.jfif$/,
+    ''
+  )}`;
 
   return (
     <Fade delay={300}>
-      <Link href={`/works/${categorySlug}/${slug}`}>
+      <Link href={filePath}>
         <a>
           <div className={styles.card}>
             <div className={styles.image}>

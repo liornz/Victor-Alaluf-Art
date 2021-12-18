@@ -29,7 +29,11 @@ const ArtCategoryPage: React.FC<
           content={`Victor Alaluf Art - ${category.name}`}
         />
       </Head>
-      <ArtworksPerCategory artworks={artworks} category={category} images={imagePropsArray} />
+      <ArtworksPerCategory
+        artworks={artworks}
+        category={category}
+        imagePropsArray={imagePropsArray}
+      />
     </React.Fragment>
   );
 };
@@ -48,16 +52,16 @@ export const getStaticProps: GetStaticProps = async (context) => {
     locale as string
   );
 
-  const imagePropsArray = await Promise.all(artworks.map(async (artwork) => {
-    const imagePath = `/images/works/${artwork.categorySlug}/${artwork.slug}/${artwork.mainImage}`;
-    const { base64, img } = await getPlaiceholder(imagePath);
-    return {
-      imageProps: {
+  const imagePropsArray = await Promise.all(
+    artworks.map(async (artwork) => {
+      const imagePath = `/images/works/${artwork.categorySlug}/${artwork.slug}/${artwork.mainImage}`;
+      const { base64, img } = await getPlaiceholder(imagePath);
+      return {
         ...img,
         blurDataURL: base64,
-      },
-    };
-  })).then(values => values);
+      };
+    })
+  ).then((values) => values);
 
   return {
     props: {

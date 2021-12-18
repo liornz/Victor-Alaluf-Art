@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import ReactMarkdown from 'react-markdown';
 import { useState } from 'react';
 import styles from './artwork.module.scss';
@@ -9,42 +11,52 @@ import PreviewArtwork from './preview-artwork';
 
 interface Props {
   artwork: artwork;
-  category: string;
-  fileName: string;
-  images: {
-    imageProps: {
-      blurDataURL: string;
-      src: string;
-      height: number;
-      width: number;
-      type?: string | undefined;
-    };
-  }[];
+  imageName: string;
+  imageProps: {
+    blurDataURL: string;
+    src: string;
+    height: number;
+    width: number;
+    type?: string | undefined;
+  };
 }
 
 const Artwork: React.FC<Props> = (props) => {
-  const [imageCounter, setImageCounter] = useState(0);
   const [imagePreview, setImagePreview] = useState(false);
-  const { artwork, category, fileName, images } = props;
+  const router = useRouter();
+  const { artwork, imageProps, imageName } = props;
   const imagesArray = artwork.images.split('/');
   const imageNamesArray = artwork.imageNames.split('/');
-  const imagePath = `/images/works/${category}/${fileName}/${imagesArray[imageCounter]}`;
+  const imageIndex = imagesArray.findIndex(
+    (image) => image.replace(/\.jpg$|\.png$|\.jfif$/, '') === imageName
+  );
 
-  const rotateImageForward = () => {
-    if (imageCounter === imagesArray.length - 1) {
-      setImageCounter(0);
+  const nextImage = (index: number) => {
+    if (index === imagesArray.length - 1) {
+      return imagesArray[0].replace(/\.jpg$|\.png$|\.jfif$/, '');
     } else {
-      setImageCounter((state) => state + 1);
+      return imagesArray[index + 1].replace(/\.jpg$|\.png$|\.jfif$/, '');
     }
   };
 
-  const rotateImageBackward = () => {
-    if (imageCounter === 0) {
-      setImageCounter(imagesArray.length - 1);
+  const previousImage = (index: number) => {
+    if (index === 0) {
+      return imagesArray[imagesArray.length - 1].replace(
+        /\.jpg$|\.png$|\.jfif$/,
+        ''
+      );
     } else {
-      setImageCounter((state) => state - 1);
+      return imagesArray[index - 1].replace(/\.jpg$|\.png$|\.jfif$/, '');
     }
   };
+
+  const nextImagePath = `/works/${artwork.categorySlug}/${
+    artwork.slug
+  }/${nextImage(imageIndex)}`;
+
+  const previousImagePath = `/works/${artwork.categorySlug}/${
+    artwork.slug
+  }/${previousImage(imageIndex)}`;
 
   const openPreviewHandler = () => {
     setImagePreview(true);
@@ -75,9 +87,9 @@ const Artwork: React.FC<Props> = (props) => {
 
     if (Math.abs(xDiff) > Math.abs(yDiff)) {
       if (xDiff > 0) {
-        rotateImageForward();
+        router.push(nextImagePath);
       } else {
-        rotateImageBackward();
+        router.push(previousImagePath);
       }
     } else {
       // if (yDiff > 0) {
@@ -94,8 +106,8 @@ const Artwork: React.FC<Props> = (props) => {
 
   const artworkData = (
     <div className={styles.data}>
-      {imageNamesArray[imageCounter] ? (
-        <h1>{imageNamesArray[imageCounter]}</h1>
+      {imageNamesArray[imageIndex] ? (
+        <h1>{imageNamesArray[imageIndex]}</h1>
       ) : null}
       <h3>{artwork.materials}</h3>
       <p>{artwork.measurements}</p>
@@ -104,7 +116,7 @@ const Artwork: React.FC<Props> = (props) => {
         className={styles.image_count}
         style={imagesArray.length < 2 ? { display: 'none' } : {}}
       >
-        {`Image ${imageCounter + 1} out of ${imagesArray.length}`}
+        {`Image ${imageIndex + 1} out of ${imagesArray.length}`}
       </p>
     </div>
   );
@@ -115,14 +127,18 @@ const Artwork: React.FC<Props> = (props) => {
       <div className={styles.main}>
         {artworkData}
         <div className={styles.image_carousel}>
-          <span
-            role="button"
-            className={styles.button_minus}
-            onClick={rotateImageBackward}
-            style={imagesArray.length < 2 ? { display: 'none' } : {}}
-          >
-            <AiOutlineLeft size="2rem" />
-          </span>
+          <Link href={previousImagePath}>
+            <a>
+              <span
+                role="button"
+                className={styles.button_minus}
+                style={imagesArray.length < 2 ? { display: 'none' } : {}}
+              >
+                <AiOutlineLeft size="2rem" />
+              </span>
+            </a>
+          </Link>
+
           <div
             className={styles.image_container}
             onClick={openPreviewHandler}
@@ -131,7 +147,7 @@ const Artwork: React.FC<Props> = (props) => {
           >
             <Image
               className={styles.image}
-              {...images[imageCounter].imageProps}
+              {...imageProps}
               // placeholder="blur"
               alt={artwork.title}
               layout="fill"
@@ -140,14 +156,17 @@ const Artwork: React.FC<Props> = (props) => {
               priority
             />
           </div>
-          <span
-            role="button"
-            className={styles.button_plus}
-            onClick={rotateImageForward}
-            style={imagesArray.length < 2 ? { display: 'none' } : {}}
-          >
-            <AiOutlineRight size="2rem" />
-          </span>
+          <Link href={nextImagePath}>
+            <a>
+              <span
+                role="button"
+                className={styles.button_plus}
+                style={imagesArray.length < 2 ? { display: 'none' } : {}}
+              >
+                <AiOutlineRight size="2rem" />
+              </span>
+            </a>
+          </Link>
         </div>
       </div>
       <ReactMarkdown className={styles.details}>
@@ -155,7 +174,7 @@ const Artwork: React.FC<Props> = (props) => {
       </ReactMarkdown>
       {imagePreview ? (
         <PreviewArtwork
-          imagePath={imagePath}
+          imageProps={imageProps}
           imageTitle={artwork.title}
           close={closePreviewHandler}
         />

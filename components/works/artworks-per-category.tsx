@@ -5,19 +5,17 @@ import { artwork, category } from '../../lib/types';
 interface Props {
   artworks: artwork[];
   category: category;
-  images: {
-    imageProps: {
-      blurDataURL: string;
-      src: string;
-      height: number;
-      width: number;
-      type?: string | undefined;
-    };
+  imagePropsArray: {
+    blurDataURL: string;
+    src: string;
+    height: number;
+    width: number;
+    type?: string | undefined;
   }[];
 }
 
 const ArtworksPerCagegory: React.FC<Props> = (props) => {
-  const { artworks, category, images } = props;
+  const { artworks, category, imagePropsArray } = props;
 
   return (
     <>
@@ -27,9 +25,7 @@ const ArtworksPerCagegory: React.FC<Props> = (props) => {
         </div>
       </div>
       <div className="caption">
-        <h1
-          className="animate__animated animate__fadeInUp"
-        >
+        <h1 className="animate__animated animate__fadeInUp">
           {category.name.toUpperCase()}
         </h1>
       </div>
@@ -37,7 +33,7 @@ const ArtworksPerCagegory: React.FC<Props> = (props) => {
         artworks={artworks}
         image={category.image}
         slug={category.slug}
-        images={images}
+        imagePropsArray={imagePropsArray}
       />
     </>
   );
