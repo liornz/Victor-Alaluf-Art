@@ -26,7 +26,7 @@ const ArtworkCard: React.FC<Props> = (props) => {
     materials,
     measurements,
   } = props.artwork;
-  const images = props.images;
+  const { imageProps } = props.images;
 
   return (
     <Fade delay={300}>
@@ -35,7 +35,7 @@ const ArtworkCard: React.FC<Props> = (props) => {
           <div className={styles.card}>
             <div className={styles.image}>
               <Image
-                {...images.imageProps}
+                {...imageProps}
                 alt={title}
                 width={400}
                 height={280}
