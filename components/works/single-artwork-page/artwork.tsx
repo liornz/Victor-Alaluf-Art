@@ -132,7 +132,7 @@ const Artwork: React.FC<Props> = (props) => {
             <Image
               className={styles.image}
               {...images[imageCounter].imageProps}
-              // placeholder="blur"
+              placeholder="blur"
               alt={artwork.title}
               layout="fill"
               objectFit="contain"
