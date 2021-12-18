@@ -106,6 +106,7 @@ const ArtWorkPage: Page = ({ fileData, imagePropsArray }) => {
           name="description"
           content={`Vic Alaluf Art - ${fileData.title}`}
         />
+        <link rel="preload" as="image" href={`/images/works/${category}/${artworkName}/${imagesArray[imageIndex]}`} />
       </Head>
       <Artwork artwork={fileData} imageProps={imagePropsArray[imageIndex]} imageName={imageName} />
     </Fragment>
