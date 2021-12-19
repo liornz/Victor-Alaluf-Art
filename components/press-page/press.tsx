@@ -27,7 +27,7 @@ const Press: React.FC<Props> = (props) => {
             </Link>
           </li>
           <li>
-            <Link href="/press/muenchner-abendzeitung">
+            <Link href="/images/press/muenchner-abendzeitung.jpg">
               <a>
                 <p>Münchner Abendzeitung - Sept. 2014</p>
               </a>
@@ -164,7 +164,7 @@ const Press: React.FC<Props> = (props) => {
             </a>
           </li>
           <li>
-            <Link href="/press/ARTNEWS-article">
+            <Link href="/images/press/ARTNEWS-article.jpg">
               <a>
                 <p>The Art Newspaper - Nov. 2014</p>
               </a>
