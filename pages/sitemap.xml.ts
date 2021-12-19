@@ -1,9 +1,17 @@
-import { getCategoryFileNames, getFileNamesPerCategory } from '../lib/data-utils';
+import {
+  getCategoryFileNames,
+  getFileData,
+  getFileNamesPerCategory,
+} from '../lib/data-utils';
 import { GetServerSidePropsContext } from 'next';
+import { artwork } from '../lib/types';
 
 type artworksPerCategory = {
   categoryName: string;
-  artworks: string[];
+  artworks: {
+    artworkName: string;
+    images: string[];
+  }[];
 };
 
 const BASE_URL = 'https://victoralaluf.com';
@@ -45,16 +53,20 @@ function generateSiteMap(allArtworks: artworksPerCategory[]) {
            <loc>${`${BASE_URL}/es-Ar/destinations/${categoryName}`}</loc>
         </url>
         ${artworks
-          .map((artwork) => {
-            return `
-              <url>
-                <loc>${`${BASE_URL}/destinations/${categoryName}/${artwork}`}</loc>
-              </url>
-              <url>
-                <loc>${`${BASE_URL}/es-Ar/destinations/${categoryName}/${artwork}`}</loc>
-              </url>
-         `;
-          })
+          .map((artwork) =>
+            artwork.images
+              .map((imageName) => {
+                return `
+                <url>
+                  <loc>${`${BASE_URL}/destinations/${categoryName}/${artwork.artworkName}/${imageName}`}</loc>
+                </url>
+                <url>
+                  <loc>${`${BASE_URL}/es-Ar/destinations/${categoryName}/${artwork.artworkName}/${imageName}`}</loc>
+                </url>
+              `;
+              })
+              .join('')
+          )
           .join('')}
      `;
        })
@@ -73,7 +85,19 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     artworks: getFileNamesPerCategory(
       category.replace(/\.md$/, ''),
       'es-Ar'
-    ).map((fileName) => fileName.replace(/\.md$/, '')),
+    ).map((artworkName) => {
+      const artworkData = getFileData(
+        category.replace(/\.md$/, ''),
+        'en-US',
+        artworkName.replace(/\.md$/, '')
+      );
+      return {
+        artworkName: artworkName.replace(/\.md$/, ''),
+        images: artworkData.images
+          .split('/')
+          .map((image) => image.replace(/\.jpg$|\.png$|\.jfif$/, '')),
+      };
+    }),
   }));
 
   // We generate the XML sitemap with the posts data

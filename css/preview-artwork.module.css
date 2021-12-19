@@ -1,0 +1,109 @@
+.image_container {
+  position: relative;
+  height: 90vh;
+  width: 90vw;
+  background-color: #ccc;
+  z-index: 1000;
+  -webkit-animation: imageIn 0.5s ease-out forwards;
+          animation: imageIn 0.5s ease-out forwards;
+}
+
+.close {
+  position: absolute;
+  font-size: 2rem;
+  font-weight: 500;
+  top: 5px;
+  right: 5px;
+  color: white;
+  cursor: pointer;
+  z-index: 1001;
+  -webkit-animation: closeIn .5s ease-out forwards;
+          animation: closeIn .5s ease-out forwards;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-animation: backdropIn 1s ease-out forwards;
+          animation: backdropIn 1s ease-out forwards;
+}
+
+@-webkit-keyframes backdropIn {
+  0% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+
+@keyframes backdropIn {
+  0% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+
+@-webkit-keyframes imageIn {
+  0% {
+    -webkit-transform: scale(0%);
+            transform: scale(0%);
+  }
+  100% {
+    -webkit-transform: scale(100%);
+            transform: scale(100%);
+  }
+}
+
+@keyframes imageIn {
+  0% {
+    -webkit-transform: scale(0%);
+            transform: scale(0%);
+  }
+  100% {
+    -webkit-transform: scale(100%);
+            transform: scale(100%);
+  }
+}
+
+@-webkit-keyframes closeIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0%);
+            transform: scale(0%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(100%);
+            transform: scale(100%);
+  }
+}
+
+@keyframes closeIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0%);
+            transform: scale(0%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(100%);
+            transform: scale(100%);
+  }
+}
+/*# sourceMappingURL=preview-artwork.module.css.map */

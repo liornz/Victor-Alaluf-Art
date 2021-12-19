@@ -1,0 +1,137 @@
+.title {
+  margin: 0;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 2.5rem;
+  color: #383838;
+  text-shadow: 2px 2px 2px #ccc;
+  background-color: #e2e1e1;
+}
+
+.main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-bottom: 2rem;
+  height: 85vh;
+  background-color: #e2e1e1;
+}
+
+@media (min-width: 800px) {
+  .main {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+.image_carousel {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 90%;
+  max-width: 90%;
+  margin: auto;
+}
+
+.image_container {
+  text-align: center;
+  position: relative;
+  height: 50vh;
+  margin: auto;
+  -webkit-box-flex: 90%;
+      -ms-flex: 90%;
+          flex: 90%;
+  background-color: #cdcdcd;
+}
+
+.image_container:hover {
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+}
+
+@media (min-width: 800px) {
+  .image_container {
+    height: 75vh;
+  }
+}
+
+.button_minus,
+.button_plus {
+  -webkit-box-flex: 10%;
+      -ms-flex: 10%;
+          flex: 10%;
+  text-align: center;
+  cursor: pointer;
+  color: #8a8a8a;
+  display: none;
+}
+
+.button_minus:hover,
+.button_plus:hover {
+  color: black;
+}
+
+@media (min-width: 600px) {
+  .button_minus,
+  .button_plus {
+    display: block;
+  }
+}
+
+.button_minus {
+  justify-self: flex-start;
+}
+
+.button_plus {
+  justify-self: flex-end;
+}
+
+.data {
+  padding: 0 0.4rem;
+  text-align: center;
+  width: 18rem;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  color: #383838;
+  text-shadow: 2px 2px 2px #ccc;
+}
+
+.image_count {
+  margin-top: 2rem;
+}
+
+.details {
+  margin: 0;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  text-align: justify;
+  background-color: #e2e1e1;
+  color: #383838;
+  text-shadow: 2px 2px 2px #ccc;
+}
+
+@media (min-width: 600px) {
+  .details {
+    padding: 1rem 10vw 3rem;
+    font-size: 1.2rem;
+    line-height: 2rem;
+  }
+}
+/*# sourceMappingURL=artwork.module.css.map */
