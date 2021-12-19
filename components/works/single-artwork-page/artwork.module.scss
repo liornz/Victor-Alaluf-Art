@@ -6,6 +6,15 @@
   color: rgb(56, 56, 56);
   text-shadow: 2px 2px 2px #ccc;
   background-color: rgb(226, 225, 225);
+  padding-top: 0
+}
+
+.category {
+  @extend .title;
+    font-size: 1rem; 
+    text-align: right;
+    display: block;
+    padding: 1rem 1rem 0;
 }
 
 .main {

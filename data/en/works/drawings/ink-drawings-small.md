@@ -1,6 +1,6 @@
 ---
 title: 'Ink Drawings (Small Format)'
-category: 'drawings'
+category: 'Drawings'
 materials: 'Ink drawings on paper'
 measurements: '50cm x 50cm'
 year: '2014'

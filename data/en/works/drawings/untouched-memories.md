@@ -1,6 +1,6 @@
 ---
 title: 'Untouched Memories'
-category: 'drawings'
+category: 'Drawings'
 materials: 'Drawing on cardboard'
 measurements: '30cm x 240cm'
 year: '2008'

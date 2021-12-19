@@ -1,6 +1,6 @@
 ---
 title: 'Plaster Drawings'
-category: 'drawings'
+category: 'Drawings'
 materials: 'Ink drawings on recycled plaster'
 measurements: '25cm x 25cm'
 year: '2004'

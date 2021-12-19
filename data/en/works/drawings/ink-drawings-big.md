@@ -1,6 +1,6 @@
 ---
 title: 'Ink Drawings (Big Format)'
-category: 'drawings'
+category: 'Drawings'
 materials: 'Ink drawings on paper'
 measurements: '120cm x 120cm'
 year: '2014'

@@ -11,6 +11,7 @@ import PreviewArtwork from './preview-artwork';
 
 interface Props {
   artwork: artwork;
+  category: string;
   imageName: string;
   imageProps: {
     blurDataURL: string;
@@ -24,7 +25,7 @@ interface Props {
 const Artwork: React.FC<Props> = (props) => {
   const [imagePreview, setImagePreview] = useState(false);
   const router = useRouter();
-  const { artwork, imageProps, imageName } = props;
+  const { artwork, imageProps, imageName, category } = props;
   const imagesArray = artwork.images.split('/');
   const imageNamesArray = artwork.imageNames.split('/');
   const imageIndex = imagesArray.findIndex(
@@ -123,6 +124,9 @@ const Artwork: React.FC<Props> = (props) => {
 
   return (
     <>
+      <Link href={`/works/${category}`}>
+        <a className={styles.category}>{`View All ${artwork.category}`}</a>
+      </Link>
       <h1 className={styles.title}>{artwork.title}</h1>
       <div className={styles.main}>
         {artworkData}

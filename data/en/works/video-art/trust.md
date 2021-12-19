@@ -1,6 +1,6 @@
 ---
 title: 'Trust'
-category: 'Video'
+category: 'Video Art'
 materials: 'Video'
 measurements: '4:21 Minuets'
 year: '2018'

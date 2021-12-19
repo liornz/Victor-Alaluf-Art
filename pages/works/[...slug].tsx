@@ -91,7 +91,6 @@ type Page = React.FC<InferGetStaticPropsType<typeof getStaticProps>>;
 const ArtWorkPage: Page = ({ fileData, imagePropsArray }) => {
   const slug = useRouter().query.slug as string[];
   const category = slug[0];
-  const artworkName = slug[1];
   const imageName = slug[2];
   const imagesArray: string[] = fileData.images.split('/');
   const imageIndex = imagesArray.findIndex(
@@ -106,9 +105,8 @@ const ArtWorkPage: Page = ({ fileData, imagePropsArray }) => {
           name="description"
           content={`Vic Alaluf Art - ${fileData.title}`}
         />
-        <link rel="preload" as="image" href={`/images/works/${category}/${artworkName}/${imagesArray[imageIndex]}`} />
       </Head>
-      <Artwork artwork={fileData} imageProps={imagePropsArray[imageIndex]} imageName={imageName} />
+      <Artwork artwork={fileData} imageProps={imagePropsArray[imageIndex]} imageName={imageName} category={category} />
     </Fragment>
   );
 };

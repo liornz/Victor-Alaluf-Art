@@ -1,6 +1,6 @@
 ---
 title: 'Shadow Series'
-category: 'drawings'
+category: 'Drawings'
 materials: 'Drawings on wood and paint'
 measurements: 'Various Sizes'
 year: '2009'

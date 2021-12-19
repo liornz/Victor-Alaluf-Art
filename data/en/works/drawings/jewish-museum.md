@@ -1,6 +1,6 @@
 ---
 title: 'Drawings for the Jewish Museum Berlin'
-category: 'drawings'
+category: 'Drawings'
 materials: 'Drawings on paper'
 measurements: '20cm x 20cm'
 year: '2015'

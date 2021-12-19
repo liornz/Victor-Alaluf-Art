@@ -1,6 +1,6 @@
 ---
 title: 'Book Paper Drawings'
-category: 'drawings'
+category: 'Drawings'
 materials: 'Print on old book paper'
 measurements: '120cm x 250cm'
 year: '2016'

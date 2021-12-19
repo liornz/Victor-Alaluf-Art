@@ -9,6 +9,7 @@ blurDataURL: ''
 images: 'ink-big-1.jpg/ink-big-2.jpg/ink-big-3.jpg/ink-big-4.jpg/ink-big-5.jpg'
 imageNames: 'Bleeding Thorns/Judas/Cain and Abel/Genesis/Scar'
 ---
+
 All three Ink Works make an implicit reference to an open wound. The wire which runs through each piece makes the burning sensation of the open wound even more explicit. It is a rusted or barbed wire, associated with fences, which divide people and acts like a wound. However, that which divides us also connects us this may reflect some hope. The wire was taken from a conflict zone, regarding which the artist has an ambivalent emotional relation.
 ### Judas
 The shape of this work is reminiscent of a heart and is referred to Judas’ betrayal of Jesus. Judas betrayed his friend, whom he also loved and according to some interpretations hanged himself as an act of remorse. This sort of motivation, these drives and mixed emotions are active in all humans and are responsible for relations between individuals and people throughout human history. Judas, and the conflicts his story brings out, is therefore present within us all. In this work the background color is purple which signifies power.
