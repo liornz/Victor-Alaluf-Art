@@ -1,5 +1,5 @@
 ---
-title: 'Descalso en la Oscuridad'
+title: 'Barefoot in the Dark'
 category: 'Installations'
 materials: 'Wooden Ladder, Cardboard and Paprika Powder'
 measurements: '200cm x 200cm x 200cm'
