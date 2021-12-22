@@ -8,6 +8,7 @@ module.exports = withPWA(withPlaiceholder({
   pwa: {
     dest: 'public',
     runtimeCaching,
+    dynamicStartUrl: false,
     buildExcludes: [/middleware-manifest.json$/],
   },
   images: {
