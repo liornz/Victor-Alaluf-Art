@@ -1,5 +1,5 @@
 ---
-title: 'shadow'
+title: 'Shadow'
 category: 'Installations'
 materials: 'Drawing on Collected Pieces of Furniture'
 measurements: '60cm - 200cm'
