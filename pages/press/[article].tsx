@@ -1,8 +1,8 @@
-import Image from 'next/image';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { GetStaticProps } from 'next';
+import Image from "next/image";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { GetStaticProps } from "next";
 
 interface Props {}
 
@@ -17,7 +17,7 @@ const Article: React.FC<Props> = (props) => {
       alt="press image"
       width={400}
       height={300}
-      layout="responsive"
+      style={{ width: "100%", height: "auto" }}
     />
   );
 };
@@ -27,7 +27,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'footer', 'nav'])),
+      ...(await serverSideTranslations(locale, ["common", "footer", "nav"])),
     },
   };
 };

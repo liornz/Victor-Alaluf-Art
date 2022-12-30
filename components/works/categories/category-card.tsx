@@ -1,7 +1,7 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import styles from './category-card.module.scss';
-import { category } from '../../../lib/types';
+import Image from "next/image";
+import Link from "next/link";
+import styles from "./category-card.module.scss";
+import { category } from "../../../lib/types";
 
 interface Props {
   category: category;
@@ -21,24 +21,22 @@ const CategoryCard: React.FC<Props> = (props) => {
   const { image } = props;
   return (
     <Link href={`/works/${slug}`}>
-      <a>
-        <div className={styles.card}>
-          <div className={styles.image}>
-            <Image
-              {...image.imageProps}
-              alt={`image representing ${name}`}
-              width={400}
-              height={280}
-              layout="responsive"
-              placeholder="blur"
-            />
-            <div className={styles.overlay}></div>
-          </div>
-          <div className={styles.title}>
-            <h1>{name}</h1>
-          </div>
+      <div className={styles.card}>
+        <div className={styles.image}>
+          <Image
+            {...image.imageProps}
+            alt={`image representing ${name}`}
+            width={400}
+            height={280}
+            style={{ width: "100%", height: "auto" }}
+            placeholder="blur"
+          />
+          <div className={styles.overlay}></div>
         </div>
-      </a>
+        <div className={styles.title}>
+          <h1>{name}</h1>
+        </div>
+      </div>
     </Link>
   );
 };

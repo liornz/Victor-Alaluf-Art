@@ -1,13 +1,13 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import ReactMarkdown from 'react-markdown';
-import { useState } from 'react';
-import styles from './artwork.module.scss';
-import { artwork } from '../../../lib/types';
-import { AiOutlineLeft } from 'react-icons/ai';
-import { AiOutlineRight } from 'react-icons/ai';
-import PreviewArtwork from './preview-artwork';
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import ReactMarkdown from "react-markdown";
+import { useState } from "react";
+import styles from "./artwork.module.scss";
+import { artwork } from "../../../lib/types";
+import { AiOutlineLeft } from "react-icons/ai";
+import { AiOutlineRight } from "react-icons/ai";
+import PreviewArtwork from "./preview-artwork";
 
 interface Props {
   artwork: artwork;
@@ -26,17 +26,17 @@ const Artwork: React.FC<Props> = (props) => {
   const [imagePreview, setImagePreview] = useState(false);
   const router = useRouter();
   const { artwork, imageProps, imageName, category } = props;
-  const imagesArray = artwork.images.split('/');
-  const imageNamesArray = artwork.imageNames.split('/');
+  const imagesArray = artwork.images.split("/");
+  const imageNamesArray = artwork.imageNames.split("/");
   const imageIndex = imagesArray.findIndex(
-    (image) => image.replace(/\.jpg$|\.png$|\.jfif$/, '') === imageName
+    (image) => image.replace(/\.jpg$|\.png$|\.jfif$/, "") === imageName
   );
 
   const nextImage = (index: number) => {
     if (index === imagesArray.length - 1) {
-      return imagesArray[0].replace(/\.jpg$|\.png$|\.jfif$/, '');
+      return imagesArray[0].replace(/\.jpg$|\.png$|\.jfif$/, "");
     } else {
-      return imagesArray[index + 1].replace(/\.jpg$|\.png$|\.jfif$/, '');
+      return imagesArray[index + 1].replace(/\.jpg$|\.png$|\.jfif$/, "");
     }
   };
 
@@ -44,10 +44,10 @@ const Artwork: React.FC<Props> = (props) => {
     if (index === 0) {
       return imagesArray[imagesArray.length - 1].replace(
         /\.jpg$|\.png$|\.jfif$/,
-        ''
+        ""
       );
     } else {
-      return imagesArray[index - 1].replace(/\.jpg$|\.png$|\.jfif$/, '');
+      return imagesArray[index - 1].replace(/\.jpg$|\.png$|\.jfif$/, "");
     }
   };
 
@@ -115,7 +115,7 @@ const Artwork: React.FC<Props> = (props) => {
       <p>{artwork.year}</p>
       <p
         className={styles.image_count}
-        style={imagesArray.length < 2 ? { display: 'none' } : {}}
+        style={imagesArray.length < 2 ? { display: "none" } : {}}
       >
         {`Image ${imageIndex + 1} out of ${imagesArray.length}`}
       </p>
@@ -124,23 +124,21 @@ const Artwork: React.FC<Props> = (props) => {
 
   return (
     <>
-      <Link href={`/works/${category}`}>
-        <a className={styles.category}>{`View All ${artwork.category}`}</a>
+      <Link href={`/works/${category}`} className={styles.category}>
+        {`View All ${artwork.category}`}
       </Link>
       <h1 className={styles.title}>{artwork.title}</h1>
       <div className={styles.main}>
         {artworkData}
         <div className={styles.image_carousel}>
           <Link href={previousImagePath}>
-            <a>
-              <span
-                role="button"
-                className={styles.button_minus}
-                style={imagesArray.length < 2 ? { display: 'none' } : {}}
-              >
-                <AiOutlineLeft size="2rem" />
-              </span>
-            </a>
+            <span
+              role="button"
+              className={styles.button_minus}
+              style={imagesArray.length < 2 ? { display: "none" } : {}}
+            >
+              <AiOutlineLeft size="2rem" />
+            </span>
           </Link>
 
           <div
@@ -154,22 +152,19 @@ const Artwork: React.FC<Props> = (props) => {
               {...imageProps}
               // placeholder="blur"
               alt={artwork.title}
-              layout="fill"
-              objectFit="contain"
-              objectPosition="50% 50%"
+              fill
+              style={{ objectFit: "contain", objectPosition: "50% 50%" }}
               priority
             />
           </div>
           <Link href={nextImagePath}>
-            <a>
-              <span
-                role="button"
-                className={styles.button_plus}
-                style={imagesArray.length < 2 ? { display: 'none' } : {}}
-              >
-                <AiOutlineRight size="2rem" />
-              </span>
-            </a>
+            <span
+              role="button"
+              className={styles.button_plus}
+              style={imagesArray.length < 2 ? { display: "none" } : {}}
+            >
+              <AiOutlineRight size="2rem" />
+            </span>
           </Link>
         </div>
       </div>

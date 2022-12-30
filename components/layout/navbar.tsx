@@ -20,27 +20,27 @@ const Navbar: React.FC<Props> = (props) => {
   const navList = (
     <ul>
       <li onClick={toggle}>
-        <Link href="/works">
-          <a
-            style={{
-              color: router.pathname === '/works' ? 'rgb(240,150,37)' : '',
-            }}
-          >
-            {t('works')}
-            <div className={styles.underline}></div>
-          </a>
+        <Link
+          href="/works"
+          style={{
+            color: router.pathname === '/works' ? 'rgb(240,150,37)' : '',
+          }}>
+
+          {t('works')}
+          <div className={styles.underline}></div>
+
         </Link>
       </li>
       <li onClick={toggle}>
-        <Link href="/press">
-          <a
-            style={{
-              color: router.pathname === '/press' ? 'rgb(240,150,37)' : '',
-            }}
-          >
-            {t('press')}
-            <div className={styles.underline}></div>
-          </a>
+        <Link
+          href="/press"
+          style={{
+            color: router.pathname === '/press' ? 'rgb(240,150,37)' : '',
+          }}>
+
+          {t('press')}
+          <div className={styles.underline}></div>
+
         </Link>
       </li>
       {/* <li onClick={toggle}>
@@ -56,15 +56,15 @@ const Navbar: React.FC<Props> = (props) => {
         </Link>
       </li> */}
       <li onClick={toggle}>
-        <Link href="/contact">
-          <a
-            style={{
-              color: router.pathname === '/contact' ? 'rgb(240,150,37)' : '',
-            }}
-          >
-            {t('contact')}
-            <div className={styles.underline}></div>
-          </a>
+        <Link
+          href="/contact"
+          style={{
+            color: router.pathname === '/contact' ? 'rgb(240,150,37)' : '',
+          }}>
+
+          {t('contact')}
+          <div className={styles.underline}></div>
+
         </Link>
       </li>
       {/* <li onClick={toggle}>

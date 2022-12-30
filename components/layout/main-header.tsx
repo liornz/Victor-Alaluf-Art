@@ -1,19 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import Logo from './logo';
-import Navbar from './navbar';
-import styles from './main-header.module.scss';
-import MenuToggler from './menuToggler';
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import Logo from "./logo";
+import Navbar from "./navbar";
+import styles from "./main-header.module.scss";
+import MenuToggler from "./menuToggler";
+import { Lato } from "@next/font/google";
+
+const lato = Lato({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 
 interface Props {}
 
 const MainHeader: React.FC<Props> = (props) => {
   const breakpoint = 600;
-  let winWidth = true;
-  if (typeof window !== 'undefined') {
-    winWidth = window.innerWidth <= breakpoint;
-  }
-  const [isMobile, setIsMobile] = useState(winWidth);
+  const [isMobile, setIsMobile] = useState(true);
   const [showMobileMenu, setShowMobileMenu] = useState<boolean | undefined>(
     undefined
   );
@@ -24,9 +26,9 @@ const MainHeader: React.FC<Props> = (props) => {
     const handleResizeWindow = () =>
       window.innerWidth <= breakpoint ? setIsMobile(true) : setIsMobile(false);
     handleResizeWindow();
-    window.addEventListener('resize', handleResizeWindow);
+    window.addEventListener("resize", handleResizeWindow);
     return () => {
-      window.removeEventListener('resize', handleResizeWindow);
+      window.removeEventListener("resize", handleResizeWindow);
     };
   }, [breakpoint]);
 
@@ -34,12 +36,10 @@ const MainHeader: React.FC<Props> = (props) => {
     setShowMobileMenu((prevState) => !prevState);
   }
 
-  let output: JSX.Element | null = isMobile ? (
-    <header>
+  let output = isMobile ? (
+    <header className={lato.className}>
       <div className={styles.header_mobile}>
-        <div
-          className={styles.toolbar_mobile}
-        >
+        <div className={styles.toolbar_mobile}>
           <Logo toggle={showMobileMenu ? toggleMobileMenu : undefined} />
           <MenuToggler show={showMobileMenu} toggle={toggleMobileMenu} />
         </div>
@@ -51,12 +51,12 @@ const MainHeader: React.FC<Props> = (props) => {
       </div>
     </header>
   ) : (
-    <header>
+    <header className={lato.className}>
       <div
         className={styles.header_desktop}
         style={
-          router.pathname === '/'
-            ? { backgroundColor: 'rgba(0, 0, 0, 0.3)' }
+          router.pathname === "/"
+            ? { backgroundColor: "rgba(0, 0, 0, 0.3)" }
             : {}
         }
       >
@@ -65,10 +65,6 @@ const MainHeader: React.FC<Props> = (props) => {
       </div>
     </header>
   );
-
-  if (typeof window === 'undefined') {
-    output = null;
-  }
 
   return output;
 };

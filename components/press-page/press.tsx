@@ -1,5 +1,5 @@
-import styles from './press.module.scss';
-import Link from 'next/link';
+import styles from "./press.module.scss";
+import Link from "next/link";
 interface Props {}
 
 const Press: React.FC<Props> = (props) => {
@@ -21,16 +21,12 @@ const Press: React.FC<Props> = (props) => {
           </li>
           <li>
             <Link href="/articles/ArtInvestor_12_14.pdf">
-              <a>
-                <p>Art Investor Magazin - Sept. 2014</p>
-              </a>
+              <p>Art Investor Magazin - Sept. 2014</p>
             </Link>
           </li>
           <li>
             <Link href="/images/press/muenchner-abendzeitung.jpg">
-              <a>
-                <p>Münchner Abendzeitung - Sept. 2014</p>
-              </a>
+              <p>Münchner Abendzeitung - Sept. 2014</p>
             </Link>
           </li>
           <li>
@@ -165,9 +161,7 @@ const Press: React.FC<Props> = (props) => {
           </li>
           <li>
             <Link href="/images/press/ARTNEWS-article.jpg">
-              <a>
-                <p>The Art Newspaper - Nov. 2014</p>
-              </a>
+              <p>The Art Newspaper - Nov. 2014</p>
             </Link>
           </li>
           <li>

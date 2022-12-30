@@ -1,10 +1,9 @@
-@use './variables';
+@use "./variables";
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Lato, sans-serif;
   width: 100%;
   // background-color: variables.$color-sinfronteras1;
 }
@@ -69,27 +68,27 @@ a {
 
 .home-inner-installations {
   @extend .home-inner;
-  background-image: url('/images/categories/installations/installations-top.jpg');
+  background-image: url("/images/categories/installations/installations-top.jpg");
 }
 .home-inner-sculptures {
   @extend .home-inner;
-  background-image: url('/images/categories/sculptures/sculptures-top.jpg');
+  background-image: url("/images/categories/sculptures/sculptures-top.jpg");
 }
 .home-inner-drawings {
   @extend .home-inner;
-  background-image: url('/images/categories/drawings/drawings-top.jpg');
+  background-image: url("/images/categories/drawings/drawings-top.jpg");
 }
 .home-inner-photography {
   @extend .home-inner;
-  background-image: url('/images/categories/photography/photography-top.jpg');
+  background-image: url("/images/categories/photography/photography-top.jpg");
 }
 .home-inner-video-art {
   @extend .home-inner;
-  background-image: url('/images/categories/video-art/video-art-top.jpg');
+  background-image: url("/images/categories/video-art/video-art-top.jpg");
 }
 .home-inner-fabric-and-paper {
   @extend .home-inner;
-  background-image: url('/images/categories/fabric-and-paper/fabric-and-paper-top.jpg');
+  background-image: url("/images/categories/fabric-and-paper/fabric-and-paper-top.jpg");
 }
 
 .caption {
@@ -105,7 +104,7 @@ a {
     font-size: 4.5rem;
     letter-spacing: 0.3rem;
   }
-  font-size: 2.0rem;
+  font-size: 2rem;
   letter-spacing: 0.2rem;
   text-shadow: 0.2rem 0.2rem 1rem black;
   padding-bottom: 1rem;

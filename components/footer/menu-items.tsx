@@ -10,23 +10,23 @@ const MenuItems: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <Link href="/works">
-        <a
-          style={{
-            color: router.pathname === '/works' ? 'rgb(240,150,37)' : '',
-          }}
-        >
-          {t('works')}
-        </a>
+      <Link
+        href="/works"
+        style={{
+          color: router.pathname === '/works' ? 'rgb(240,150,37)' : '',
+        }}>
+
+        {t('works')}
+
       </Link>
-      <Link href="/press">
-        <a
-          style={{
-            color: router.pathname === '/press' ? 'rgb(240,150,37)' : '',
-          }}
-        >
-          {t('press')}
-        </a>
+      <Link
+        href="/press"
+        style={{
+          color: router.pathname === '/press' ? 'rgb(240,150,37)' : '',
+        }}>
+
+        {t('press')}
+
       </Link>
       {/* <Link href="/shop">
         <a
@@ -37,14 +37,14 @@ const MenuItems: React.FC = () => {
           {t('shop')}
         </a>
       </Link> */}
-      <Link href="/contact">
-        <a
-          style={{
-            color: router.pathname === '/contact' ? 'rgb(240,150,37)' : '',
-          }}
-        >
-          {t('contact')}
-        </a>
+      <Link
+        href="/contact"
+        style={{
+          color: router.pathname === '/contact' ? 'rgb(240,150,37)' : '',
+        }}>
+
+        {t('contact')}
+
       </Link>
     </div>
   );

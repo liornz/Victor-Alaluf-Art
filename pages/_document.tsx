@@ -1,15 +1,11 @@
 // eslint-disable-next-line @next/next/no-document-import-in-page
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
         <Head>
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap"
-          />
           <meta name="application-name" content="Victor Alaluf - Art" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta
@@ -31,7 +27,10 @@ class MyDocument extends Document {
           <meta name="msapplication-tap-highlight" content="no" />
           <meta name="theme-color" content="#000000" />
 
-          <link rel="apple-touch-icon" href="images/icons/touch-icon-iphone.png" />
+          <link
+            rel="apple-touch-icon"
+            href="images/icons/touch-icon-iphone.png"
+          />
           <link
             rel="apple-touch-icon"
             sizes="152x152"
@@ -61,17 +60,14 @@ class MyDocument extends Document {
             href="/images/icons/favicon-16x16.png"
           />
           <link rel="manifest" href="/manifest.json" />
-           <link
+          <link
             rel="mask-icon"
             href="/images/icons/safari-pinned-tab.svg"
             color="#5bbad5"
           />
           <link rel="shortcut icon" href="/favicon.ico" />
           <meta name="twitter:card" content="summary" />
-          <meta
-            name="twitter:url"
-            content="https://victoralaluf.com"
-          />
+          <meta name="twitter:url" content="https://victoralaluf.com" />
           <meta name="twitter:title" content="Victor Alaluf - Art" />
           <meta
             name="twitter:description"
@@ -84,12 +80,12 @@ class MyDocument extends Document {
           <meta name="twitter:creator" content="@VictorAlaluf" />
           <meta property="og:type" content="website" />
           <meta property="og:title" content="Victor Alaluf" />
-          <meta property="og:description" content="Victor Alaluf - Artist Portfolio" />
-          <meta property="og:site_name" content="Victor Alaluf - Art" />
           <meta
-            property="og:url"
-            content="https://victoralaluf.com"
+            property="og:description"
+            content="Victor Alaluf - Artist Portfolio"
           />
+          <meta property="og:site_name" content="Victor Alaluf - Art" />
+          <meta property="og:url" content="https://victoralaluf.com" />
           <meta
             property="og:image"
             content="https://victoralaluf.com/images/icons/apple-touch-icon.png"

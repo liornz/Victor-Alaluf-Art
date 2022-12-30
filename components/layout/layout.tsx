@@ -1,51 +1,47 @@
-import { Fragment, useContext, useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import MainHeader from './main-header';
-import styles from './layout.module.scss';
-import Footer from '../footer/footer';
-import Notification from '../ui/notification';
-import NotificationContext from '../../context/notification-context';
+import { Fragment, useContext, useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import MainHeader from "./main-header";
+import styles from "./layout.module.scss";
+import Footer from "../footer/footer";
+import Notification from "../ui/notification";
+import NotificationContext from "../../context/notification-context";
+import { Lato } from "@next/font/google";
 
-interface Props {}
+const lato = Lato({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
+type Props = {
+  children?: React.ReactNode;
+};
 
 const Layout: React.FC<Props> = (props) => {
   const breakpoint = 600;
-  let winWidth = true;
-  if (typeof window !== 'undefined') {
-    winWidth = window.innerWidth <= breakpoint;
-  }
-  const [isMobile, setIsMobile] = useState(winWidth);
+  const [isMobile, setIsMobile] = useState(true);
   const {} = props;
   const router = useRouter();
   const notificationCtx = useContext(NotificationContext);
   const activeNotification = notificationCtx.notification;
 
-    useEffect(() => {
-      const handleResizeWindow = () =>
-        window.innerWidth <= breakpoint
-          ? setIsMobile(true)
-          : setIsMobile(false);
-      handleResizeWindow();
-      window.addEventListener('resize', handleResizeWindow);
-      return () => {
-        window.removeEventListener('resize', handleResizeWindow);
-      };
-    }, [breakpoint]);
+  useEffect(() => {
+    const handleResizeWindow = () =>
+      window.innerWidth <= breakpoint ? setIsMobile(true) : setIsMobile(false);
+    handleResizeWindow();
+    window.addEventListener("resize", handleResizeWindow);
+    return () => {
+      window.removeEventListener("resize", handleResizeWindow);
+    };
+  }, [breakpoint]);
 
-    let main: JSX.Element | null = (
-      <main
-        className={styles.main}
-        style={
-          router.pathname === '/' && !isMobile ? { paddingTop: '0px' } : {}
-        }
-      >
-        {props.children}
-      </main>
-    );
-
-      if (typeof window === 'undefined') {
-        main = null;
-      }
+  let main = (
+    <main
+      className={styles.main + " " + lato.className}
+      style={router.pathname === "/" && !isMobile ? { paddingTop: "0px" } : {}}
+    >
+      {props.children}
+    </main>
+  );
 
   return (
     <Fragment>

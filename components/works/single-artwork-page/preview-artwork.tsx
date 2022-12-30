@@ -1,5 +1,5 @@
-import styles from './preview-artwork.module.scss';
-import Image from 'next/image';
+import styles from "./preview-artwork.module.scss";
+import Image from "next/image";
 
 interface Props {
   imageTitle: string;
@@ -18,13 +18,17 @@ const PreviewArtwork: React.FC<Props> = (props) => {
   return (
     <>
       <div className={styles.backdrop} onClick={close}>
-        <div className={styles.image_container} onClick={(event) => {event.stopPropagation()}}>
+        <div
+          className={styles.image_container}
+          onClick={(event) => {
+            event.stopPropagation();
+          }}
+        >
           <Image
             {...imageProps}
             alt={imageTitle}
-            layout="fill"
-            objectFit="contain"
-            objectPosition="50% 50%"
+            fill
+            style={{ objectFit: "contain", objectPosition: "50% 50%" }}
           />
         </div>
         <span className={styles.close} onClick={close}>
