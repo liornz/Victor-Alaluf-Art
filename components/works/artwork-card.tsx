@@ -33,8 +33,8 @@ const ArtworkCard: React.FC<Props> = (props) => {
             <Image
               {...imageProps}
               alt={title}
-              width={400}
-              height={280}
+              width={594}
+              height={420}
               style={{ width: "100%", height: "auto" }}
               placeholder="blur"
             />

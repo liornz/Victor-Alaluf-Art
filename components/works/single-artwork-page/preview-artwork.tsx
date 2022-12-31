@@ -27,8 +27,12 @@ const PreviewArtwork: React.FC<Props> = (props) => {
           <Image
             {...imageProps}
             alt={imageTitle}
-            fill
-            style={{ objectFit: "contain", objectPosition: "50% 50%" }}
+            style={{
+              objectFit: "contain",
+              objectPosition: "50% 50%",
+              height: "100%",
+              width: "100%",
+            }}
           />
         </div>
         <span className={styles.close} onClick={close}>

@@ -152,8 +152,12 @@ const Artwork: React.FC<Props> = (props) => {
               {...imageProps}
               // placeholder="blur"
               alt={artwork.title}
-              fill
-              style={{ objectFit: "contain", objectPosition: "50% 50%" }}
+              style={{
+                objectFit: "contain",
+                objectPosition: "50% 50%",
+                height: "100%",
+                width: "100%",
+              }}
               priority
             />
           </div>
