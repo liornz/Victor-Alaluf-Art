@@ -1,13 +1,13 @@
 ---
-title: 'Synapsis'
-category: 'Installations'
-materials: 'Cardboard and Red Tape'
-measurements: '200cm x 700cm'
-year: '2015'
-mainImage: 'synapsis-1.jpg'
-blurDataURL: ''
-images: 'synapsis-1.jpg/synapsis-2.jpg/synapsis-3.jpg/synapsis-4.jpg/synapsis-5.jpg/synapsis-6.jpg'
-imageNames: ''
+title: "Synapsis"
+category: "Installations"
+materials: "Cardboard and Red Tape"
+measurements: "200cm x 700cm"
+year: "2015"
+mainImage: "synapsis-tn.jpg"
+blurDataURL: ""
+images: "synapsis-1.jpg/synapsis-2.jpg/synapsis-3.jpg/synapsis-4.jpg/synapsis-5.jpg/synapsis-6.jpg"
+imageNames: ""
 ---
 
 In the modern world, we seem to be lost in translation. On the one hand, forms of mass media and networking have enabled people to connect in ways that would seem impossible just a decade ago. On the other hand, we seem to have lost the ability to connect directly, on a personal level. We seem to have lost our sense of identity. This work refers to connectivity, both between human beings and between ourselves and our experiences, hopes, dreams and values. It uses the common material of card-board and gives it a new meaning and context.
